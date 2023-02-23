@@ -1,0 +1,23 @@
+.headingText {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1f2a36;
+}
+
+.description {
+  font-size: 1em;
+  color: #46505c;
+}
+
+@media screen and (max-width: 720px) {
+  .headingText {
+    font-size: 28px;
+    font-weight: 700;
+    color: white;
+  }
+
+  .description {
+    font-size: 1em;
+    color: white;
+  }
+}

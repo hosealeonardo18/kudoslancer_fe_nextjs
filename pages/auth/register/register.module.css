@@ -1,0 +1,47 @@
+.login,
+.image {
+  height: 100vh;
+}
+.bgImage {
+  background-image: linear-gradient(to bottom, rgba(94, 80, 161, 0.82), rgba(112, 96, 192, 0.82)), url('../../../public/images/true-agency-o4UhdLv5jbQ-unsplash\ 1.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  background-position: center;
+}
+
+.description {
+  font-size: 44px;
+  font-weight: 700;
+  color: white;
+}
+
+.bgImageRes {
+  padding: 100px 0;
+}
+@media screen and (max-width: 767px) {
+  .bgImage {
+    display: none;
+  }
+
+  .bgImageRes {
+    background-image: linear-gradient(to bottom, rgba(94, 80, 161, 0.82), rgba(112, 96, 192, 0.82)), url('../../../public/images/true-agency-o4UhdLv5jbQ-unsplash\ 1.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    background-position: center;
+    padding: 60px 0;
+  }
+
+  .anchorText {
+    color: #fbb017 !important;
+  }
+
+  .haveAccount {
+    color: white !important;
+  }
+}

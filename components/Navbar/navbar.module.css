@@ -1,0 +1,50 @@
+.navbar {
+  font-size: 0.9em;
+  height: 70px;
+}
+
+.buttonLogin {
+  font-size: 0.9em;
+  text-decoration: none;
+  padding: 6px 20px;
+  border-radius: 4px;
+  background-color: #5e50a1;
+  color: white;
+  margin: 0 10px;
+}
+
+.buttonLogin:hover {
+  background-color: #8472df;
+  color: white;
+}
+
+.buttonSignup {
+  text-decoration: none;
+  font-size: 0.9em;
+  padding: 4px 20px;
+  border-radius: 4px;
+  border: 1px solid #5e50a1;
+  color: #303030;
+  margin: 0 10px;
+}
+
+.buttonSignup:hover {
+  padding: 4px 20px;
+  background-color: #8472df;
+  color: white;
+  margin: 0 10px;
+}
+
+.navLink {
+  color: #1f2a36;
+  transition: ease-in-out 0.3s;
+}
+
+.navLink:hover {
+  border-bottom: 1px solid #1f2a36;
+  padding-left: 0;
+  width: 50%;
+}
+
+@media screen and (max-width: 576px) {
+}
