@@ -18,7 +18,7 @@ export default function Navbar() {
           <div className={`collapse navbar-collapse ${style.navbarCollapse}`} id="navbarNav">
             <ul className="navbar-nav m-auto">
               <li className="nav-item mx-3">
-                <Link className={`nav-link active ${style.navLink}`} href="#">
+                <Link className={`nav-link active ${style.navLink}`} href="/">
                   Home
                 </Link>
               </li>
@@ -28,7 +28,7 @@ export default function Navbar() {
                 </Link>
               </li>
               <li className="nav-item mx-3">
-                <Link className={`nav-link ${style.navLink}`} href={`/hire`}>
+                <Link className={`nav-link ${style.navLink}`} href={`/jobseeker`}>
                   Hiring
                 </Link>
               </li>
@@ -62,7 +62,7 @@ export default function Navbar() {
           <div className={`collapse navbar-collapse ${style.navbarCollapse}`} id="navbarNav">
             <ul className="navbar-nav m-auto">
               <li className="nav-item mx-3">
-                <Link className={`nav-link active ${style.navLink}`} href="#">
+                <Link className={`nav-link active ${style.navLink}`} href="/">
                   Home
                 </Link>
               </li>
@@ -72,7 +72,7 @@ export default function Navbar() {
                 </Link>
               </li>
               <li className="nav-item mx-3">
-                <Link className={`nav-link ${style.navLink}`} href={`/hire`}>
+                <Link className={`nav-link ${style.navLink}`} href={`/jobseeker`}>
                   Hiring
                 </Link>
               </li>

@@ -1,21 +1,21 @@
 import Image from 'next/image';
 import style from './profileHire.module.css';
-import img from '../../public/images/testi/Ellipse 325.png';
+
 import Link from 'next/link';
 
-export default function CardProfileHire() {
+export default function CardProfileHire({ img, titleName, job, location, id }) {
   return (
-    <div className="container">
+    <div className="container mb-1">
       <div className="row">
         <div className="col-md-12">
           <div className={style.wrapperCard}>
             <Image src={img} alt="img" className={style.imageCard} />
             <div className={style.wrapperProfile}>
-              <h5 className={style.titleName}>Louis Tomlinson</h5>
-              <span className={style.job}>Web Developer</span>
+              <h5 className={style.titleName}>{titleName}</h5>
+              <span className={style.job}>{job}</span>
               <div className={style.wrapperLocation}>
                 <i className="bi bi-pin-map-fill me-2" />
-                <span className={style.location}>Jakarta, Indonesia</span>
+                <span className={style.location}>{location}</span>
               </div>
 
               <div className={style.wrapperSkills}>
@@ -26,7 +26,7 @@ export default function CardProfileHire() {
               </div>
             </div>
 
-            <Link className={style.buttonProfile} href="">
+            <Link className={style.buttonProfile} href={`/jobseeker/${id}`}>
               Lihat Profile
             </Link>
           </div>

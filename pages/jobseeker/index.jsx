@@ -1,11 +1,14 @@
 import CardProfileHire from '@/components/CardProfileHire';
 import Header from '@/components/Header';
 import Navbar from '@/components/Navbar';
-import Image from 'next/image';
-import Link from 'next/link';
-import style from './hire.module.css';
 
-export default function hire() {
+import Link from 'next/link';
+import style from './jobseeker.module.css';
+import img from '../../public/images/testi/Ellipse 325.png';
+import img2 from '../../public/images/testi/Ellipse 323.png';
+import Footer from '@/components/Footer';
+
+export default function jobseeker() {
   return (
     <>
       <Navbar />
@@ -61,10 +64,49 @@ export default function hire() {
           </div>
 
           <div className="row mt-4">
-            <CardProfileHire />
+            <CardProfileHire img={img} titleName="Louis Tomlinson" job="Frontend Developer" location="Jakarta, Indonesia" id="1" />
+
+            <CardProfileHire img={img2} titleName="Harry Styles" job="Backend Developer" location="Bandung, Indonesia" id="2" />
+          </div>
+        </div>
+
+        <div className="container">
+          <div className="row mt-5">
+            <div className="col-md-12 d-flex justify-content-center ">
+              <nav aria-label="Page navigation example">
+                <ul className="pagination gap-2">
+                  <li className={`page-item`}>
+                    <Link className={`page-link ${style.pageItem}`} href="#">
+                      <i className={`bi bi-caret-left ${style.icon}`} />
+                    </Link>
+                  </li>
+                  <li className={`page-item`}>
+                    <Link className={`page-link ${style.pageItem}`} href="#">
+                      1
+                    </Link>
+                  </li>
+                  <li className={`page-item`}>
+                    <Link className={`page-link ${style.pageItem}`} href="#">
+                      2
+                    </Link>
+                  </li>
+                  <li className={`page-item`}>
+                    <Link className={`page-link ${style.pageItem}`} href="#">
+                      3
+                    </Link>
+                  </li>
+                  <li className={`page-item`}>
+                    <Link className={`page-link ${style.pageItem}`} href="#">
+                      <i className={`bi bi-caret-right ${style.icon}`} />
+                    </Link>
+                  </li>
+                </ul>
+              </nav>
+            </div>
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 }
