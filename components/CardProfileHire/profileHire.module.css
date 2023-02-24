@@ -1,0 +1,123 @@
+.wrapperCard {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  background-color: white;
+  padding: 40px 40px;
+
+  align-items: center;
+}
+
+.imageCard {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-right: 30px;
+}
+
+.titleName {
+  font-weight: 700;
+  margin: 0;
+}
+
+.job {
+  font-size: 0.9em;
+  color: #9ea0a5;
+  margin: 5px 0;
+}
+
+.wrapperLocation {
+  display: flex;
+  align-items: center;
+  color: #9ea0a5;
+  margin: 8px 0;
+}
+
+.wrapperSkills {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.skills {
+  font-size: 0.9em;
+  background-color: #fbb017;
+  padding: 6px 20px;
+
+  border-radius: 4px;
+  color: white;
+}
+
+.buttonProfile {
+  text-decoration: none;
+  padding: 10px 30px;
+  background-color: #5e50a1;
+  color: white;
+  border-radius: 4px;
+  margin-left: auto;
+}
+
+.buttonProfile:hover {
+  text-decoration: none;
+  padding: 10px 30px;
+  background-color: #5040a1;
+  color: white;
+  border-radius: 4px;
+  margin-left: auto;
+}
+
+@media screen and (max-width: 767px) {
+  .wrapperCard {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-wrap: wrap;
+    width: 100%;
+    background-color: white;
+    padding: 40px 40px;
+  }
+
+  .imageCard {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+  .wrapperLocation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #9ea0a5;
+    margin: 8px 0;
+  }
+
+  .wrapperSkills {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+  }
+
+  .buttonProfile {
+    text-decoration: none;
+    padding: 10px 30px;
+    background-color: #5e50a1;
+    color: white;
+    border-radius: 4px;
+    margin-left: 0;
+    margin-top: 20px;
+  }
+
+  .buttonProfile:hover {
+    text-decoration: none;
+    padding: 10px 30px;
+    background-color: #5040a1;
+    color: white;
+    border-radius: 4px;
+  }
+}

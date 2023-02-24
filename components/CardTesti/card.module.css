@@ -1,0 +1,81 @@
+.wrapperImageTesti {
+  width: 330px;
+  height: 330px;
+  padding: 30px;
+  background-color: white;
+  border-radius: 0px;
+  box-shadow: 0px 8px 16px 0px #c5c5c540;
+  margin-bottom: 20px;
+}
+
+.imageProfile {
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 6px solid rgba(251, 176, 23, 0.37);
+}
+
+.titleName {
+  font-weight: 700;
+  color: #1f2a36;
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
+.job {
+  font-size: 0.9em;
+  color: #46505c;
+  padding: 0;
+}
+.comment {
+  font-style: italic;
+  margin-top: 10px;
+}
+
+@media screen and (max-width: 767px) {
+  .headerText {
+    font-size: 2em;
+    font-weight: 600;
+    color: #1f2a36;
+    line-height: 48px;
+    margin-bottom: 30px;
+  }
+
+  .wrapperImageTesti {
+    width: 200px;
+    height: 240px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 0px;
+    box-shadow: 0px 8px 16px 0px #c5c5c540;
+    margin-bottom: 20px;
+  }
+
+  .imageProfile {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 6px solid rgba(251, 176, 23, 0.37);
+  }
+
+  .titleName {
+    font-size: 1em;
+    font-weight: 700;
+    color: #1f2a36;
+    margin-top: 10px;
+    margin-bottom: 0;
+  }
+
+  .job {
+    font-size: 0.8em;
+    color: #46505c;
+    padding: 0;
+  }
+  .comment {
+    font-size: 0.8em;
+    font-style: italic;
+    margin-top: 10px;
+  }
+}

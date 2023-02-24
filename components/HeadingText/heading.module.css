@@ -1,0 +1,17 @@
+.headingtext {
+  font-size: 2.5em;
+  font-weight: 600;
+  color: #1f2a36;
+  line-height: 48px;
+  margin-bottom: 30px;
+}
+
+@media screen and (max-width: 767px) {
+  .headingtext {
+    font-size: 2em;
+    font-weight: 600;
+    color: #1f2a36;
+    line-height: 48px;
+    margin-bottom: 30px;
+  }
+}

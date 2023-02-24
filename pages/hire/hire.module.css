@@ -1,0 +1,125 @@
+.containerFluid {
+  background-color: #f6f7f8;
+  padding: 30px 0;
+}
+
+.wrapperSearchBar {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background-color: white;
+  padding: 10px;
+}
+
+.inputGrup {
+  width: 70%;
+  height: 50px;
+  border: none;
+  padding-left: 20px;
+}
+
+.buttonSearch {
+  width: 45%;
+  padding: 15px 0;
+  color: white;
+  background-color: #5e50a1;
+  border-radius: 4px;
+  border: none;
+  margin-top: 0 !important;
+  margin-left: 10px;
+}
+
+.buttonSearch:hover {
+  width: 45%;
+
+  color: white;
+  background-color: #50419b;
+  border-radius: 4px;
+  border: none;
+}
+
+.iconFilter {
+  font-size: 1.6em;
+}
+
+.buttonCategory {
+  width: 45%;
+  padding: 10px 0;
+  color: #46505c;
+  background-color: white;
+  border-radius: 4px;
+  border: none;
+}
+
+.buttonCategory:hover {
+  width: 45%;
+  padding: 10px 0;
+  color: #46505c;
+  background-color: rgb(208, 208, 208);
+  border-radius: 4px;
+  border: none;
+}
+
+.wrapperButton {
+  width: 25%;
+  text-align: end;
+  display: flex;
+  align-items: center;
+  border-left: 1px solid #46505c;
+}
+
+.iconSearch {
+  border: none;
+  background-color: white;
+  font-weight: 700;
+  padding: 10px 20px;
+
+  margin: 0 20px;
+}
+
+.icoSearch {
+  font-size: 1.2em;
+}
+
+.listItem {
+  padding: 20px 30px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.dropItem:hover {
+  background-color: white;
+}
+
+/* card job seeker */
+
+@media screen and (max-width: 767px) {
+  .wrapperSearchBar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+    background-color: white;
+    padding: 10px;
+  }
+  .inputGrup {
+    width: 82% !important;
+    border: none;
+    padding-left: 20px;
+  }
+
+  .iconSearch {
+    border: none;
+    background-color: white;
+    font-weight: 700;
+    padding: 10px 10px;
+
+    margin: 0 10px;
+  }
+
+  .wrapperButton {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+    border: none;
+  }
+}

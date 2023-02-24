@@ -1,0 +1,278 @@
+.bgContainerFluid {
+  background-color: #f6f7f8;
+  padding: 50px 0;
+}
+
+.headingText {
+  font-size: 45px;
+  font-weight: 700;
+  line-height: 60px;
+  color: #1f2a36;
+}
+
+.description {
+  color: #46505c;
+}
+
+.buttonCTA {
+  padding: 10px 20px;
+  margin-top: 30px;
+  border: none;
+  background-color: #5e50a1;
+  border-radius: 4px;
+  color: white;
+}
+
+.buttonCTA:hover {
+  background-color: #5242a1;
+  color: white;
+}
+
+.wrapperImgHero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 450px;
+  height: 450px;
+  position: relative;
+}
+
+.accsentsImg1 {
+  background-color: #e2e5ed;
+  width: 80%;
+  height: 80%;
+  transform: rotate(75deg);
+  position: absolute;
+}
+
+.imageHero {
+  width: 80%;
+  height: 80%;
+  position: absolute;
+}
+
+.accsentsImg2 {
+  width: 20%;
+  height: 20%;
+  background-color: #5242a1;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+}
+
+.accsent3 {
+  position: absolute;
+  bottom: 60px;
+  left: 70px;
+}
+.accsentsImg3 {
+  position: absolute;
+  width: 10%;
+  height: 10%;
+  bottom: 0;
+  left: 80px;
+  background-color: #fbb017;
+}
+
+.listItems {
+  list-style: none;
+  padding: 0;
+}
+
+.listItem {
+  display: flex;
+  margin-bottom: 15px;
+}
+
+.iconSuccess {
+  font-size: 1.3em;
+  text-align: center;
+  color: white;
+  background-color: #5242a1;
+  width: 25px;
+  height: 25px;
+  border-radius: 80%;
+  margin-right: 20px;
+}
+
+.wrapperImgWhy {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 450px;
+  height: 380px;
+  position: relative;
+}
+
+.accsentsImgWhy {
+  background-color: #e2e5ed;
+  width: 80%;
+  height: 80%;
+  transform: rotate(75deg);
+  position: absolute;
+}
+
+.imageWhy {
+  width: 80%;
+  height: 80%;
+  position: absolute;
+}
+
+.accsentsImgWhy2 {
+  width: 20%;
+  height: 20%;
+  background-color: #5242a1;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.iconSuccessWarning {
+  font-size: 1.3em;
+  text-align: center;
+  color: white;
+  background-color: #fbb017;
+  width: 25px;
+  height: 25px;
+  border-radius: 80%;
+  margin-right: 20px;
+}
+
+.wrapperImgSkill {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 450px;
+  height: 380px;
+  position: relative;
+}
+
+.accsentsImgSkill {
+  background-color: #e2e5ed;
+  width: 80%;
+  height: 80%;
+  transform: rotate(75deg);
+  position: absolute;
+}
+
+.imageSkill {
+  width: 80%;
+  height: 80%;
+  position: absolute;
+}
+
+.accsentsImgSkill2 {
+  width: 20%;
+  height: 20%;
+  background-color: #fbb017;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.headerText {
+  font-size: 2.5em;
+  font-weight: 600;
+  color: #1f2a36;
+  line-height: 48px;
+  margin-bottom: 30px;
+}
+
+@media screen and (max-width: 576px) {
+  .colSm {
+    display: none !important;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .rowHero {
+    background-image: linear-gradient(to bottom, rgba(94, 80, 161, 0.82), rgba(112, 96, 192, 0.82)), url('../public/images/true-agency-o4UhdLv5jbQ-unsplash\ 1.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    background-position: center;
+    margin-bottom: 80px;
+  }
+
+  .colSm {
+    display: none !important;
+  }
+
+  .headingText {
+    font-size: 2.5em;
+    font-weight: 700;
+    line-height: 60px;
+    color: white;
+  }
+
+  .description {
+    color: white;
+  }
+
+  .buttonCTA {
+    padding: 10px 20px;
+    margin-top: 30px;
+    border: none;
+    background-color: #fbb017;
+    border-radius: 4px;
+    color: white;
+  }
+
+  .wrapperImgWhy {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 350px;
+    height: 300px;
+    position: relative;
+    margin-bottom: 30px;
+  }
+
+  .accsentsImgWhy {
+    background-color: #e2e5ed;
+    width: 80%;
+    height: 80%;
+    transform: rotate(75deg);
+    position: absolute;
+  }
+
+  .imageWhy {
+    width: 80%;
+    height: 80%;
+    position: absolute;
+  }
+
+  .accsentsImgWhy2 {
+    width: 20%;
+    height: 20%;
+    background-color: #5242a1;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+  }
+
+  .headerText {
+    font-size: 2em;
+    font-weight: 600;
+    color: #1f2a36;
+    line-height: 48px;
+    margin-bottom: 30px;
+  }
+
+  .colSmOrder {
+    order: -1;
+  }
+
+  .wrapperImgSkill {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 350px;
+    height: 300px;
+    position: relative;
+    margin-bottom: 30px;
+  }
+}

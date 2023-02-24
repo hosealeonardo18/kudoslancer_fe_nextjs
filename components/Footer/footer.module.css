@@ -1,0 +1,51 @@
+.containerFluid {
+  background-color: #5e50a1;
+  padding: 50px 0;
+}
+
+.headingFooter {
+  font-size: 1.6em;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.description {
+  font-size: 1em;
+  color: white;
+}
+
+.copyright {
+  color: white;
+  margin-right: auto;
+}
+
+.wrapperFooter {
+  display: flex;
+  gap: 50px;
+}
+
+.buttonTelpon {
+  text-decoration: none;
+  color: white;
+}
+
+.buttonTelpon:hover {
+  text-decoration: none;
+  color: white;
+}
+
+.buttonEmail {
+  text-decoration: none;
+  color: white;
+}
+
+.buttonEmail:hover {
+  text-decoration: none;
+  color: white;
+}
+
+.hr {
+  margin-top: 20px;
+  border: 1px solid white;
+}
