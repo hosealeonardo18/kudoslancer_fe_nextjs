@@ -17,7 +17,16 @@ import Link from 'next/link';
 import CardPorto from '@/components/CardPorto';
 import CardExperience from '@/components/CardExperience';
 
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect } from 'react';
+
 export default function ProfileDetail() {
+  useEffect(() => {
+    AOS.init();
+    AOS.refresh();
+  }, []);
+
   const router = useRouter();
 
   return (
@@ -25,7 +34,7 @@ export default function ProfileDetail() {
       <Navbar />
       <div className="container">
         <div className="row mt-5 mb-5">
-          <div className="col-md-4 col-sm-12 mb-5">
+          <div className="col-md-4 col-sm-12 mb-5" data-aos="fade-right" data-aos-duration="1000">
             <div className={style.wrapperCard}>
               <Image src={img} alt="img" className={style.imageCard} />
               <h5 className={style.titleName}>Louis Tomlinson</h5>
@@ -67,7 +76,7 @@ export default function ProfileDetail() {
               </ul>
             </div>
           </div>
-          <div className="col-md-8 col-sm-12">
+          <div className="col-md-8 col-sm-12" data-aos="fade-left" data-aos-duration="1000">
             <div className={style.wrapperCard}>
               <ul className="nav nav-tabs" id="myTab" role="tablist">
                 <li className="nav-item" role="presentation">

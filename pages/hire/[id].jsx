@@ -1,6 +1,4 @@
-import CardProfileHire from '@/components/CardProfileHire';
 import Navbar from '@/components/Navbar';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import style from './hire.module.css';
 
@@ -42,8 +40,15 @@ export default function hire() {
               <h2 className={style.titleHeader}>Hubungi Lous Tomlinson</h2>
               <span className={style.subTitle}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.</span>
 
-              <div className="row mt-5">
+              <div className="row mt-5 d-flex justify-content-center">
+                <select className={`form-select ${style.formControl}`} aria-label="Default select example">
+                  <option selected>Project</option>
+                  <option value={1}>Project1</option>
+                  <option value={2}>Project2</option>
+                  <option value={3}>Project3</option>
+                </select>
                 <Form children="Nama Lengkap" placeholder="Masukan Nama Lengkap" type="text" name="fullname" value="" />
+
                 <Form children="Email" placeholder="Masukan Email" type="email" name="email" value="" />
 
                 <Form children="No. Handphone" placeholder="Masukan No. Handphone" type="text" name="no_telp" value="" />
@@ -53,8 +58,6 @@ export default function hire() {
                   <label htmlFor="floatingTextarea2" className="ms-2">
                     Deskripsi
                   </label>
-
-                  <input type="file" />
                 </div>
               </div>
 
