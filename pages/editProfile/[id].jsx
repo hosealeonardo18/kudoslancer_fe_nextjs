@@ -24,12 +24,19 @@ export default function EditProfile() {
     description: '',
     jobseekerId: id,
   });
+
   const [skill, setSkill] = useState({
     skill_name: '',
     jobseekerId: id,
   });
 
-  console.log(skill);
+  const [portofolio, setPortfolio] = useState({
+    application_name: '',
+    link_repository: '',
+    jobseekerId: id,
+  });
+
+  console.log(portofolio);
 
   const handleChange = (e) => {
     setJobseeker({
@@ -48,6 +55,13 @@ export default function EditProfile() {
   const handleChangeExp = (e) => {
     setExperiences({
       ...experiences,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleChangePort = (e) => {
+    setPortfolio({
+      ...portofolio,
       [e.target.name]: e.target.value,
     });
   };
@@ -74,12 +88,25 @@ export default function EditProfile() {
       })
       .catch((err) => alert(`${err.response}`));
   };
+
   const handleSubmitExp = (e) => {
     e.preventDefault();
     axios
       .post(`http://localhost:3030/experiences`, experiences)
       .then((response) => {
-        alert('Created Data Success');
+        alert('Created Experiences Success');
+        window.location.reload();
+      })
+      .catch((err) => alert(`${err.response}`));
+  };
+
+  const handleSubmitPort = (e) => {
+    e.preventDefault();
+    axios
+      .post(`http://localhost:3030/portfolios`, portofolio)
+      .then((response) => {
+        alert('Created Portfolio Success');
+        window.location.reload();
       })
       .catch((err) => alert(`${err.response}`));
   };
@@ -176,7 +203,7 @@ export default function EditProfile() {
                   </label>
                 </div>
 
-                <button className={`mt-4 ${style.buttonAdd}`} type="submit" onClick={() => window.location.reload()}>
+                <button className={`mt-4 ${style.buttonAdd}`} type="submit">
                   Tambah Pengalaman Kerja
                 </button>
               </form>
@@ -187,58 +214,60 @@ export default function EditProfile() {
               <h3 className={style.textHeader}>Portofolio</h3>
               <hr />
 
-              <Form children="Nama Aplikasi" placeholder="Masukan nama aplikasi" type="text" name="application_name" value="" />
+              <form onSubmit={handleSubmitPort}>
+                <Form children="Nama Aplikasi" placeholder="Masukan nama aplikasi" type="text" name="application_name" value={portofolio.application_name} change={handleChangePort} />
 
-              <Form children="Link Repository" placeholder="Masukan Link Repository" type="text" name="link_repository" value="" />
+                <Form children="Link Repository" placeholder="Masukan Link Repository" type="text" name="link_repository" value={portofolio.link_repository} change={handleChangePort} />
 
-              <div className="row">
-                <div className="col-md-6">
-                  <div className="form-check">
-                    <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
-                    <label className="form-check-label" htmlFor="flexRadioDefault1">
-                      Aplikasi Mobile
+                <div className="row">
+                  <div className="col-md-6">
+                    <div className="form-check">
+                      <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
+                      <label className="form-check-label" htmlFor="flexRadioDefault1">
+                        Aplikasi Mobile
+                      </label>
+                    </div>
+                  </div>
+
+                  <div className="col-md-6">
+                    <div className="form-check" style={{ height: '50px' }}>
+                      <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" defaultChecked />
+                      <label className="form-check-label" htmlFor="flexRadioDefault2">
+                        Aplikasi Web
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <div className={style.wrapperUpload}>
+                  <Image src={iconCloud} alt="image" />
+                  <div className="mb-3 mt-3">
+                    <label htmlFor="formFile" className="form-label">
+                      Default file input example
                     </label>
+                    <input className="form-control" type="file" id="formFile" />
+                  </div>
+
+                  <span className={style.rules}>Drag & Drop untuk Upload Gambar Aplikasi Mobile</span>
+                  <span className={style.subRules}>DAtau cari untuk mengupload file dari direktorimu.</span>
+
+                  <div className={style.wrapperCardRulesImg}>
+                    <div className={style.wrapperImg}>
+                      <Image src={iconExt} alt="img" />
+                      <span>High-Res Image PNG, JPG or GIF </span>
+                    </div>
+
+                    <div className={style.wrapperImg}>
+                      <Image src={iconExpand} alt="img" />
+                      <span>Size 1080x1920 or 600x800 </span>
+                    </div>
                   </div>
                 </div>
 
-                <div className="col-md-6">
-                  <div className="form-check" style={{ height: '50px' }}>
-                    <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" defaultChecked />
-                    <label className="form-check-label" htmlFor="flexRadioDefault2">
-                      Aplikasi Web
-                    </label>
-                  </div>
-                </div>
-              </div>
-
-              <div className={style.wrapperUpload}>
-                <Image src={iconCloud} alt="image" />
-                <div className="mb-3 mt-3">
-                  <label htmlFor="formFile" className="form-label">
-                    Default file input example
-                  </label>
-                  <input className="form-control" type="file" id="formFile" />
-                </div>
-
-                <span className={style.rules}>Drag & Drop untuk Upload Gambar Aplikasi Mobile</span>
-                <span className={style.subRules}>DAtau cari untuk mengupload file dari direktorimu.</span>
-
-                <div className={style.wrapperCardRulesImg}>
-                  <div className={style.wrapperImg}>
-                    <Image src={iconExt} alt="img" />
-                    <span>High-Res Image PNG, JPG or GIF </span>
-                  </div>
-
-                  <div className={style.wrapperImg}>
-                    <Image src={iconExpand} alt="img" />
-                    <span>Size 1080x1920 or 600x800 </span>
-                  </div>
-                </div>
-              </div>
-
-              <button className={`mt-4 ${style.buttonAdd}`} onClick={() => window.location.reload()}>
-                Tambah Pengalaman Kerja
-              </button>
+                <button className={`mt-4 ${style.buttonAdd}`} type="submit">
+                  Tambah Portofolio
+                </button>
+              </form>
             </div>
           </div>
         </div>

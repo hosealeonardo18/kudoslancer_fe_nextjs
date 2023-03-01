@@ -30,7 +30,7 @@
     },
     {
       "id": 3,
-      "fullname": "Dudung",
+      "fullname": "Dudung Ari",
       "email": "dudung@gmail.com",
       "password": "test123",
       "no_telp": "087880724111",
@@ -43,7 +43,7 @@
       "github": "github.com/dudung"
     },
     {
-      "fullname": "Christiano Gabrielo Maradona",
+      "fullname": "Christiano Gabrielo",
       "email": "christian@gmail.com",
       "no_telp": "087788998800",
       "password": "test",
@@ -86,13 +86,22 @@
       "jobseekerId": "3"
     },
     {
-      "position": "UI / UX Designer",
-      "company_name": "PT Warna Warni",
-      "date_before": "2023-03-01",
+      "position": "Frontend Developer",
+      "company_name": "PT Berkah",
+      "date_before": "2023-01-01",
       "date_after": "2023-03-01",
-      "description": "Saya bekerja sebagai UX",
-      "jobseekerId": "4",
+      "description": "Saya sebagai Frontend ",
+      "jobseekerId": "3",
       "id": 4
+    },
+    {
+      "position": "Backend Developer",
+      "company_name": "PT Warna Warni",
+      "date_before": "2023-01-08",
+      "date_after": "2023-03-01",
+      "description": "Saya seorang Backend developer",
+      "jobseekerId": "4",
+      "id": 5
     }
   ],
   "skills": [
@@ -140,6 +149,26 @@
       "skill_name": "Figma",
       "jobseekerId": "4",
       "id": 9
+    },
+    {
+      "skill_name": "React JS",
+      "jobseekerId": "3",
+      "id": 10
+    },
+    {
+      "skill_name": "Next JS",
+      "jobseekerId": "1",
+      "id": 11
+    },
+    {
+      "skill_name": "Figma",
+      "jobseekerId": "3",
+      "id": 12
+    },
+    {
+      "skill_name": "Redux",
+      "jobseekerId": "4",
+      "id": 13
     }
   ],
   "categories": [
@@ -188,6 +217,18 @@
       "type_portfolios": "website",
       "image": "",
       "jobseekerId": "3"
+    },
+    {
+      "application_name": "Recipe",
+      "link_repository": "github.com/christiano",
+      "jobseekerId": "4",
+      "id": 5
+    },
+    {
+      "application_name": "hire job",
+      "link_repository": "github.com/christiano",
+      "jobseekerId": "4",
+      "id": 6
     }
   ],
   "recruiters": [
