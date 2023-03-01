@@ -1,0 +1,209 @@
+{
+  "jobseekers": [
+    {
+      "id": 1,
+      "fullname": "Hosea Leonardo",
+      "email": "hosealeonardo18@gmail.com",
+      "password": "test123",
+      "no_telp": "087880724123",
+      "city": "Jakarta, Indonesia",
+      "position": "Frontend Developer",
+      "company": "PT Maju Terus",
+      "description": "saya seorang pekerja keras",
+      "image": "",
+      "instagram": "hosealeonardo",
+      "github": "github.com/hosealeonardo"
+    },
+    {
+      "id": 2,
+      "fullname": "Leonardo",
+      "email": "leonardo@gmail.com",
+      "password": "test123",
+      "no_telp": "087880724123",
+      "city": "Jakarta, Indonesia",
+      "position": "Fullstack Developer",
+      "company": "PT Terang bulan",
+      "description": "saya seorang pekerja keras",
+      "image": "",
+      "instagram": "leonardo",
+      "github": "github.com/leonardo"
+    },
+    {
+      "id": 3,
+      "fullname": "Dudung",
+      "email": "dudung@gmail.com",
+      "password": "test123",
+      "no_telp": "087880724111",
+      "city": "Jakarta, Indonesia",
+      "position": "Backend Developer",
+      "company": "PT Terang bulan",
+      "description": "saya seorang pekerja keras",
+      "image": "",
+      "instagram": "dudung",
+      "github": "github.com/dudung"
+    },
+    {
+      "fullname": "Christiano Gabrielo Maradona",
+      "email": "christian@gmail.com",
+      "no_telp": "087788998800",
+      "password": "test",
+      "currentPassword": "test",
+      "id": 4,
+      "position": "UI / UX Designer",
+      "city": "Bandung, Indonesia",
+      "company_name": "PT Warna Warni"
+    }
+  ],
+  "experiences": [
+    {
+      "id": 1,
+      "position": "Frontend Developer",
+      "company_name": "PT Maju Terus",
+      "date_before": 20180821,
+      "date_after": 20200931,
+      "description": "Bekerja sebagai frontend",
+      "image": "",
+      "jobseekerId": "1"
+    },
+    {
+      "id": 2,
+      "position": "Fullstack Developer",
+      "company_name": "PT Terang bulan",
+      "date_before": 20210402,
+      "date_after": 20211031,
+      "description": "Bekerja sebagai fullstack",
+      "image": "",
+      "jobseekerId": "1"
+    },
+    {
+      "id": 3,
+      "position": "Backend Developer",
+      "company_name": "PT Terang bulan",
+      "date_before": 20220131,
+      "date_after": 20230227,
+      "description": "Bekerja sebagai Backend",
+      "image": "",
+      "jobseekerId": "3"
+    },
+    {
+      "position": "UI / UX Designer",
+      "company_name": "PT Warna Warni",
+      "date_before": "2023-03-01",
+      "date_after": "2023-03-01",
+      "description": "Saya bekerja sebagai UX",
+      "jobseekerId": "4",
+      "id": 4
+    }
+  ],
+  "skills": [
+    {
+      "id": 1,
+      "skill_name": "Javascript",
+      "jobseekerId": "2"
+    },
+    {
+      "id": 2,
+      "skill_name": "Next JS",
+      "jobseekerId": "2"
+    },
+    {
+      "id": 3,
+      "skill_name": "React JS",
+      "jobseekerId": "1"
+    },
+    {
+      "id": 4,
+      "skill_name": "Express JS",
+      "jobseekerId": "2"
+    },
+    {
+      "id": 5,
+      "skill_name": "Java",
+      "jobseekerId": "1"
+    },
+    {
+      "id": 6,
+      "skill_name": "PHP",
+      "jobseekerId": "3"
+    },
+    {
+      "skill_name": "Javascript",
+      "jobseekerId": "4",
+      "id": 7
+    },
+    {
+      "skill_name": "Redux",
+      "jobseekerId": "4",
+      "id": 8
+    },
+    {
+      "skill_name": "Figma",
+      "jobseekerId": "4",
+      "id": 9
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "categories_name": "Remote"
+    },
+    {
+      "id": 2,
+      "categories_name": "Onsite"
+    },
+    {
+      "id": 3,
+      "categories_name": "Hybrid"
+    }
+  ],
+  "portfolios": [
+    {
+      "id": 1,
+      "application_name": "KasirKu",
+      "link_repository": "https://github.com/example",
+      "type_portfolios": "website",
+      "image": "",
+      "jobseekerId": "2"
+    },
+    {
+      "id": 2,
+      "application_name": "Blanja",
+      "link_repository": "https://github.com/example",
+      "type_portfolios": "website",
+      "image": "",
+      "jobseekerId": "1"
+    },
+    {
+      "id": 3,
+      "application_name": "Berobat Yuk",
+      "link_repository": "https://github.com/example",
+      "type_portfolios": "Website & Mobile",
+      "image": "",
+      "jobseekerId": "2"
+    },
+    {
+      "id": 4,
+      "application_name": "Enak Bahari",
+      "link_repository": "https://github.com/example",
+      "type_portfolios": "website",
+      "image": "",
+      "jobseekerId": "3"
+    }
+  ],
+  "recruiters": [
+    {
+      "id": 1,
+      "fullname": "Caca",
+      "email": "caca@gmail.com",
+      "no_telp": "087880724111",
+      "company_name": "PT Era Jaya",
+      "company_field": "Finance",
+      "city": "PT Maju Terus",
+      "description": "saya seorang pekerja keras",
+      "instagram": "cacamarica",
+      "linkedin": "caca marica",
+      "image": "",
+      "image_thumbnail": ""
+    }
+  ]
+}

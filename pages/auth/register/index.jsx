@@ -3,8 +3,47 @@ import ButtonAuth from '@/components/ButtonAuth/ButtonAuth';
 import Form from '@/components/Form';
 import HeaderAuth from '@/components/HeaderAuth';
 import Link from 'next/link';
+import axios from 'axios';
+import { useState } from 'react';
+import { useRouter } from 'next/router';
+import Swal from 'sweetalert2';
 
 export default function register() {
+  const router = useRouter();
+
+  const [register, setRegister] = useState({
+    fullname: '',
+    email: '',
+    no_telp: '',
+    password: '',
+    currentPassword: '',
+  });
+
+  const handleChange = (e) => {
+    setRegister({
+      ...register,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    axios
+      .post('http://localhost:3030/jobseekers', register)
+      .then((res) => {
+        Swal.fire('Register Success!', 'You clicked the button!', 'success');
+        router.push('/login');
+      })
+      .catch((err) =>
+        Swal.fire({
+          icon: 'error',
+          title: `${err.response.message}`,
+          text: 'Something went wrong!',
+        })
+      );
+  };
+
   return (
     <section>
       <div className="container-fluid">
@@ -21,19 +60,19 @@ export default function register() {
                 <div className="row ">
                   <div className="col-lg-10 col-xl-7 mx-auto ">
                     <HeaderAuth children={`Halo, Selamat Datang`} description={`Silahkan Daftar Akun terlebih dahulu`} />
-                    <form onSubmit={''}>
-                      <Form children="Nama" type="text" name="fullname" placeholder="Masukan nama panjang" />
+                    <form onSubmit={handleSubmit}>
+                      <Form children="Nama" type="text" name="fullname" placeholder="Masukan nama panjang" change={handleChange} />
 
-                      <Form children="Email" type="email" name="email" placeholder="Masukan alamat email" />
+                      <Form children="Email" type="email" name="email" placeholder="Masukan alamat email" change={handleChange} />
 
-                      <Form children="No Handphone" type="text" name="no_telp" placeholder="Masukan no Handphone" />
+                      <Form children="No Handphone" type="text" name="no_telp" placeholder="Masukan no Handphone" change={handleChange} />
 
-                      <Form children="Kata Sandi" type="password" name="password" placeholder="Masukan kata sandi" />
+                      <Form children="Kata Sandi" type="password" name="password" placeholder="Masukan kata sandi" change={handleChange} />
 
-                      <Form children="Konfirmasi Kata Sandi" type="password" name="currentPassword" placeholder="Masukan konfirmasi kata sandi" />
+                      <Form children="Konfirmasi Kata Sandi" type="password" name="currentPassword" placeholder="Masukan konfirmasi kata sandi" change={handleChange} />
 
                       <div className="mb-3 form-group text-center mt-5">
-                        <ButtonAuth Button="Log in" />
+                        <ButtonAuth Button="Register" />
                       </div>
                       <div className="mt-3 text-center">
                         <span className={`${style.haveAccount} mb-3`}>Don't have an account? </span>

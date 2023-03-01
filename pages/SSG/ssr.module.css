@@ -7,7 +7,6 @@
   background-color: white;
   border-radius: 10px;
   padding: 30px;
-  margin-bottom: 30px;
 }
 
 .imageCard {
@@ -70,17 +69,6 @@
   border-radius: 4px;
 }
 
-.buttonCancel {
-  text-decoration: none;
-  color: #5e50a1;
-  width: 100%;
-  background-color: #f6f7f8;
-  border: 1px solid #5e50a1;
-  padding: 13px 30px;
-  border-radius: 4px;
-  margin-top: 15px;
-}
-
 .listSocials {
   list-style-type: none;
   padding: 0;
@@ -103,63 +91,27 @@
   font-size: 1.1em;
 }
 
-.wrapperButton {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.input {
-  box-sizing: border-box;
-  height: 50px;
-  box-shadow: 0px 4px 5px 1px rgba(0, 0, 0, 0.11);
-  border-radius: 6px;
-  margin-right: 20px;
-  margin-top: 0;
-}
-.buttonSimpan {
-  border: none;
-  padding: 10px 20px;
-  height: 50px;
-  border-radius: 4px;
-  background-color: #fbb017;
-  color: white;
-  margin-top: 10px;
-}
-
-.buttonSimpan:hover {
-  border: none;
-  padding: 10px 20px;
-  height: 50px;
-  border-radius: 4px;
-  background-color: #ffaa00;
-  color: white;
-}
-
-.buttonAdd {
+/* =================== */
+.buttonPort {
   text-decoration: none;
-  color: white;
-  width: 100%;
-  background-color: #ffaa00;
-  padding: 13px 30px;
+  color: #46505c;
+  background-color: white;
+  font-size: 1em;
+
+  padding-bottom: 13px;
   border: none;
-  border-radius: 4px;
+
+  transition: all 0.3s ease-in-out;
 }
 
-.wrapperUpload {
-  text-align: center;
-  padding: 30px;
-  border: 1px dashed #9ea0a5;
-  width: 100%;
+.buttonExperience {
+  text-decoration: none;
+  color: #46505c;
+  background-color: white;
+  font-size: 1em;
+  margin-right: 20px;
+  padding-bottom: 13px;
+  border: none;
 
-  border-radius: 4px;
-}
-
-.wrapperCardRulesImg {
-  display: flex;
-  justify-content: center;
-}
-
-.wrapperImg {
-  margin: 20px 10px;
+  transition: all 0.3s ease-in-out;
 }

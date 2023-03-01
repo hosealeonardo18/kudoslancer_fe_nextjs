@@ -2,9 +2,18 @@ import ButtonAuth from '@/components/ButtonAuth/ButtonAuth';
 import Form from '@/components/Form';
 import HeaderAuth from '@/components/HeaderAuth';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { useState } from 'react';
 import style from './login.module.css';
 
 export default function login() {
+  const router = useRouter();
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    localStorage.setItem('token', 'token');
+    router.push('/');
+  };
   return (
     <section>
       <div className="container-fluid">
@@ -31,8 +40,9 @@ export default function login() {
                         </Link>
                       </div>
                       <div className="mb-3 form-group text-center mt-4">
-                        <ButtonAuth Button="Log in" />
+                        <ButtonAuth Button="Login" click={handleLogin} />
                       </div>
+
                       <div className="mt-3 text-center">
                         <span className={`${style.haveAccount} mb-3`}>Don't have an account? </span>
                         <Link className={`${style.anchorText} small text-decoration-none text-warning`} href={`/auth/register`}>

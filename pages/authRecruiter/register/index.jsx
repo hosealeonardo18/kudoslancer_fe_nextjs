@@ -37,7 +37,7 @@ export default function register() {
                       <Form children="Konfirmasi Kata Sandi" type="password" name="currentPassword" placeholder="Masukan konfirmasi kata sandi" />
 
                       <div className="mb-3 form-group text-center mt-5">
-                        <ButtonAuth Button="Log in" />
+                        <ButtonAuth Button="Register" />
                       </div>
                       <div className="mt-3 text-center">
                         <span className={`${style.haveAccount} mb-3`}>Don't have an account? </span>

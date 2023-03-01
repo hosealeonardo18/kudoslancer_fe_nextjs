@@ -2,10 +2,21 @@ import Image from 'next/image';
 import Link from 'next/link';
 import style from './navbar.module.css';
 import img from '../../public/images/Profile/formal.png';
+import { useEffect, useState } from 'react';
 
-const isLogin = false;
 export default function Navbar() {
-  if (isLogin) {
+  const [login, setLogin] = useState('');
+
+  useEffect(() => {
+    setLogin(localStorage.getItem('token'));
+  });
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    window.location.reload();
+  };
+
+  if (login === 'token') {
     return (
       <nav className={`navbar navbar-expand-lg ${style.navbar} sticky-top`}>
         <div className="container">
@@ -42,9 +53,18 @@ export default function Navbar() {
               <i class={`bi bi-chat-dots-fill ${style.iconMessage}`}></i>
             </Link>
 
-            <Link className={style.buttonProfile} href="">
-              <Image src={img} className={style.imageProfile} />
-            </Link>
+            <div className="dropdown-center">
+              <button className={style.buttonProfile} type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <Image src={img} className={style.imageProfile} />
+              </button>
+              <ul className="dropdown-menu">
+                <li>
+                  <Link className="dropdown-item" href="" onClick={handleLogout}>
+                    Logout
+                  </Link>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </nav>
@@ -78,7 +98,7 @@ export default function Navbar() {
               </li>
             </ul>
 
-            <Link className={style.buttonLogin} href={`auth/login`}>
+            <Link className={style.buttonLogin} href={`authRecruiter/login`}>
               Login
             </Link>
 

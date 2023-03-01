@@ -6,9 +6,35 @@ import img from '../../public/images/testi/Ellipse 325.png';
 import Image from 'next/image';
 import Footer from '@/components/Footer';
 import Form from '@/components/Form';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 export default function hire() {
   const router = useRouter();
+  const id = router.query.id;
+  const [jobseekersId, setJobseekersId] = useState([]);
+  const [skills, setSkills] = useState([]);
+
+  // get data jobseeker by id
+  useEffect(() => {
+    axios
+      .get(`http://localhost:3030/jobseekers/${id}`)
+      .then((response) => {
+        setJobseekersId(response.data);
+      })
+      .catch((err) => console.log(err));
+  }, [id]);
+
+  // get skill by id
+  useEffect(() => {
+    axios
+      .get(`http://localhost:3030/skills?jobseekerId=${id}`)
+      .then((response) => {
+        setSkills(response.data);
+      })
+      .catch((err) => console.log(err));
+  }, [id]);
+
   return (
     <div className={style.bgBody}>
       <Navbar />
@@ -17,27 +43,26 @@ export default function hire() {
           <div className="col-md-4 col-sm-12 mb-5">
             <div className={style.wrapperCard}>
               <Image src={img} alt="img" className={style.imageCard} />
-              <h5 className={style.titleName}>Louis Tomlinson</h5>
-              <span className={style.job}>Web developer</span>
+              <h5 className={style.titleName}>{jobseekersId.fullname}</h5>
+              <span className={style.job}>{jobseekersId.position}</span>
               <div className={style.wrapperLocation}>
                 <i className="bi bi-pin-map-fill me-2" />
-                <span className={style.location}>Jakarta, Indonesia</span>
+                <span className={style.location}>{jobseekersId.city}</span>
               </div>
 
-              <p className={style.description}>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Architecto dolores inventore quam libero vitae enim fugiat, ex illum rem neque, omnis aliquid nemo quas ea!</p>
+              <p className={style.description}>{jobseekersId.description}</p>
 
               <h3 className="mt-4">Skill</h3>
               <div className={style.wrapperSkills}>
-                <span className={style.skills}>PHP</span>
-                <span className={style.skills}>Javascript</span>
-                <span className={style.skills}>React JS</span>
-                <span className={style.skills}>Express JS</span>
+                {skills?.map((skill) => {
+                  return <span className={style.skills}>{skill.skill_name}</span>;
+                })}
               </div>
             </div>
           </div>
           <div className="col-md-8 col-sm-12">
             <div className={style.wrapperCard}>
-              <h2 className={style.titleHeader}>Hubungi Lous Tomlinson</h2>
+              <h2 className={style.titleHeader}>Hubungi {jobseekersId.fullname}</h2>
               <span className={style.subTitle}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.</span>
 
               <div className="row mt-5 d-flex justify-content-center">

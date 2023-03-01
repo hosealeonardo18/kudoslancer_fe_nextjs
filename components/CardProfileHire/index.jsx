@@ -5,12 +5,25 @@ import Link from 'next/link';
 
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 export default function CardProfileHire({ img, titleName, job, location, id }) {
   useEffect(() => {
     AOS.init();
     AOS.refresh();
+  }, []);
+
+  const [skills, setSkills] = useState([]);
+
+  // get skill by id
+  useEffect(() => {
+    axios
+      .get(`http://localhost:3030/skills?jobseekerId=${id}`)
+      .then((response) => {
+        setSkills(response.data);
+      })
+      .catch((err) => console.log(err));
   }, []);
 
   return (
@@ -28,10 +41,9 @@ export default function CardProfileHire({ img, titleName, job, location, id }) {
               </div>
 
               <div className={style.wrapperSkills}>
-                <span className={style.skills}>PHP</span>
-                <span className={style.skills}>Javascript</span>
-                <span className={style.skills}>React JS</span>
-                <span className={style.skills}>Express JS</span>
+                {skills.map((item) => (
+                  <span className={style.skills}>{item.skill_name}</span>
+                ))}
               </div>
             </div>
 

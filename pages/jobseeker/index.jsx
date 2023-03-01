@@ -7,8 +7,21 @@ import style from './jobseeker.module.css';
 import img from '../../public/images/testi/Ellipse 325.png';
 import img2 from '../../public/images/testi/Ellipse 323.png';
 import Footer from '@/components/Footer';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 export default function jobseeker() {
+  const [jobseekers, setJobseekers] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get('http://localhost:3030/jobseekers')
+      .then((response) => {
+        setJobseekers(response.data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
   return (
     <>
       <Navbar />
@@ -64,9 +77,9 @@ export default function jobseeker() {
           </div>
 
           <div className="row mt-4">
-            <CardProfileHire img={img} titleName="Louis Tomlinson" job="Frontend Developer" location="Jakarta, Indonesia" id="1" />
-
-            <CardProfileHire img={img2} titleName="Harry Styles" job="Backend Developer" location="Bandung, Indonesia" id="2" />
+            {jobseekers.map((item) => {
+              return <CardProfileHire img={img} titleName={item.fullname} job={item.position} location={item.city} id={item.id} />;
+            })}
           </div>
         </div>
 
