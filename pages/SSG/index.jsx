@@ -36,10 +36,11 @@ import { useEffect } from 'react';
 import axios from 'axios';
 
 export async function getStaticProps() {
-  const res = await axios.get('http://localhost:3030/skills');
+  const res = await axios.get('http://localhost:4000/skill?sortBy=&sort=asc&limit=5&page=1');
+
   return {
     props: {
-      skills: res.data,
+      skills: res.data.data,
     },
   };
 }
@@ -59,9 +60,11 @@ const Home = ({ skills }) => {
           <div className="row vh-100 d-flex align-items-center">
             <div className="col-md-6 col-sm-12" data-aos="fade-right" data-aos-duration="1000">
               <h3 className={styles.headingText}>Talenta terbaik negri untuk perubahan revolusi 4.0</h3>
-              <p className={styles.description}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio perspiciatis architecto necessitatibus pariatur, corrupti unde autem?</p>
+              <p className={styles.description}>Bergabunglah dengan kami dan temukan peluang karir terbaik untuk meningkatkan keterampilan dan pengalaman Anda.</p>
 
-              <button className={styles.buttonCTA}>Mulai Dari Sekarang</button>
+              <button className={styles.buttonCTA} onClick={() => router.push('/jobseeker')}>
+                Mulai Dari Sekarang
+              </button>
             </div>
             <div className={`col-md-6 col-sm-12 d-flex justify-content-end ${styles.colSm}`} data-aos="fade-left" data-aos-duration="1000">
               <div className={`${styles.wrapperImgHero}`}>
@@ -92,22 +95,22 @@ const Home = ({ skills }) => {
             <ul className={styles.listItems}>
               <li className={styles.listItem}>
                 <i className={`bi bi-check-all ${styles.iconSuccess}`} />
-                <span>Lorem ipsum dolor sit amet.</span>
+                <span>Layanan rekrutmen yang terintegrasi dan terpersonalisasi.</span>
               </li>
 
               <li className={styles.listItem}>
                 <i className={`bi bi-check-all ${styles.iconSuccess}`} />
-                <span>Lorem ipsum dolor sit amet.</span>
+                <span>Mencari talenta terbaik dengan lebih mudah dan cepat.</span>
               </li>
 
               <li className={styles.listItem}>
                 <i className={`bi bi-check-all ${styles.iconSuccess}`} />
-                <span>Lorem ipsum dolor sit amet.</span>
+                <span>Menyeleksi kandidat</span>
               </li>
 
               <li className={styles.listItem}>
                 <i className={`bi bi-check-all ${styles.iconSuccess}`} />
-                <span>Lorem ipsum dolor sit amet.</span>
+                <span>Wawancara secara online melalui platform kami.</span>
               </li>
             </ul>
           </div>
@@ -120,10 +123,10 @@ const Home = ({ skills }) => {
               <div className="row">
                 <div className="col-md-6 col-sm-6">
                   <ul className={styles.listItems}>
-                    {skills.map((skill) => (
+                    {skills?.map((skill) => (
                       <li className={styles.listItem}>
                         <i className={`bi bi-check-all ${styles.iconSuccessWarning}`} />
-                        <span>{skill.skill_name}</span>
+                        <span>{skill?.skill_name}</span>
                       </li>
                     ))}
                   </ul>
@@ -131,25 +134,12 @@ const Home = ({ skills }) => {
 
                 <div className="col-md-6 col-sm-6" data-aos="fade-left" data-aos-duration="1000">
                   <ul className={styles.listItems}>
-                    <li className={styles.listItem}>
-                      <i className={`bi bi-check-all ${styles.iconSuccessWarning}`} />
-                      <span>Golang</span>
-                    </li>
-
-                    <li className={styles.listItem}>
-                      <i className={`bi bi-check-all ${styles.iconSuccessWarning}`} />
-                      <span>C++</span>
-                    </li>
-
-                    <li className={styles.listItem}>
-                      <i className={`bi bi-check-all ${styles.iconSuccessWarning}`} />
-                      <span>Ruby</span>
-                    </li>
-
-                    <li className={styles.listItem}>
-                      <i className={`bi bi-check-all ${styles.iconSuccessWarning}`} />
-                      <span>Rust</span>
-                    </li>
+                    {skills?.map((skill) => (
+                      <li className={styles.listItem}>
+                        <i className={`bi bi-check-all ${styles.iconSuccessWarning}`} />
+                        <span>{skill?.skill_name}</span>
+                      </li>
+                    ))}
                   </ul>
                 </div>
               </div>

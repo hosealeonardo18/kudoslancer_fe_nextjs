@@ -2,7 +2,6 @@ import Navbar from '@/components/Navbar';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import style from './edit.module.css';
-import img from '../../public/images/testi/Ellipse 325.png';
 import iconCloud from '../../public/images/icon/cloud.png';
 import iconExpand from '../../public/images/icon/expand 2.png';
 import iconExt from '../../public/images/icon/photo (1) 2.png';

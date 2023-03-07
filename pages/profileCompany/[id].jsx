@@ -1,7 +1,6 @@
 import style from './profile.module.css';
 import Navbar from '@/components/Navbar';
 import Image from 'next/image';
-import img from '../../public/images/testi/Ellipse 325.png';
 import { useRouter } from 'next/router';
 import Footer from '@/components/Footer';
 import axios from 'axios';

@@ -9,12 +9,17 @@ import experience from '../../public/images/experience/Rectangle 672.png';
 import CardPorto from '@/components/CardPorto';
 import CardExperience from '@/components/CardExperience';
 import Footer from '@/components/Footer';
+import { useState } from 'react';
 
 export async function getServerSideProps({ params }) {
-  const res = await axios.get(`http://localhost:3030/jobseekers/${params.id}`);
-  const resSkill = await axios.get(`http://localhost:3030/skills?jobseekerId=${params.id}`);
-  const resExp = await axios.get(`http://localhost:3030/experiences?jobseekerId=${params.id}`);
-  const resPort = await axios.get(`http://localhost:3030/portfolios?jobseekerId=${params.id}`);
+  const res = await axios.get(`${process.env.API_KUDOSLANCER}/jobseeker/${params.id}`);
+  const resSkill = await axios.get(`${process.env.API_KUDOSLANCER}/skill/detail/jobseekerId`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  const resExp = await axios.get(`${process.env.API_KUDOSLANCER}/experiences?jobseekerId=${params.id}`);
+  const resPort = await axios.get(`${process.env.API_KUDOSLANCER}/portfolios?jobseekerId=${params.id}`);
 
   return {
     props: { jobseeker: res.data, skill: resSkill.data, experience: resExp.data, portfolio: resPort.data },
@@ -22,7 +27,10 @@ export async function getServerSideProps({ params }) {
 }
 
 const SSR = (jobseeker) => {
-  console.log(jobseeker.experience);
+  const [idJobseekers, setIdJobseekers] = useState('');
+  setIdJobseekers(localStorage.getItem('id'));
+
+  console.log(idJobseekers);
   return (
     <div className={style.bgBody}>
       <Navbar />

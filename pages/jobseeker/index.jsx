@@ -4,23 +4,20 @@ import Navbar from '@/components/Navbar';
 
 import Link from 'next/link';
 import style from './jobseeker.module.css';
-import img from '../../public/images/testi/Ellipse 325.png';
-import img2 from '../../public/images/testi/Ellipse 323.png';
 import Footer from '@/components/Footer';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { getAllJobseekers } from '@/redux/action/jobseekersAction';
 
 export default function jobseeker() {
+  const dispatch = useDispatch();
+
   const [jobseekers, setJobseekers] = useState([]);
 
   useEffect(() => {
-    axios
-      .get('http://localhost:4000/jobseeker')
-      .then((response) => {
-        setJobseekers(response.data.data);
-      })
-      .catch((err) => console.log(err));
-  }, []);
+    dispatch(getAllJobseekers(setJobseekers));
+  }, [dispatch]);
 
   return (
     <>

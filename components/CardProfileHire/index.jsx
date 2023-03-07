@@ -27,7 +27,7 @@ export default function CardProfileHire({ img, titleName, job, location, id }) {
   }, [id]);
 
   return (
-    <div className="container mb-1">
+    <div className="container mb-4">
       <div className="row">
         <div className="col-md-12" data-aos="fade-right" data-aos-duration="1000">
           <div className={style.wrapperCard}>

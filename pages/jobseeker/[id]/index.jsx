@@ -21,8 +21,11 @@ import axios from 'axios';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { getDetailJobseekrs } from '@/redux/action/jobseekersAction';
 
 export default function ProfileDetail() {
+  const dispatch = useDispatch();
   useEffect(() => {
     AOS.init();
     AOS.refresh();
@@ -40,12 +43,7 @@ export default function ProfileDetail() {
   useEffect(() => {
     setRole(localStorage.getItem('role'));
     // get jobseekers
-    axios
-      .get(`${process.env.API_KUDOSLANCER}/jobseeker/${id}`)
-      .then((response) => {
-        setJobseekersId(response.data.data);
-      })
-      .catch((err) => console.log(err));
+    dispatch(getDetailJobseekrs(setJobseekersId, id));
 
     // // get skill by id
     axios
@@ -70,7 +68,7 @@ export default function ProfileDetail() {
         setPortfolios(response.data.data);
       })
       .catch((err) => console.log(err));
-  }, [id]);
+  }, [id, dispatch]);
 
   return (
     <div className={style.bgBody}>
