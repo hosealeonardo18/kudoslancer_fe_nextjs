@@ -38,6 +38,8 @@ export default function Home() {
   useEffect(() => {
     AOS.init();
     AOS.refresh();
+
+    // get All Skills
   }, []);
 
   return (

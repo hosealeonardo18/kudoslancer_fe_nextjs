@@ -148,7 +148,7 @@
 
 .wrapperUpload {
   text-align: center;
-  padding: 30px;
+  padding: 30px 150px;
   border: 1px dashed #9ea0a5;
   width: 100%;
 
@@ -162,4 +162,15 @@
 
 .wrapperImg {
   margin: 20px 10px;
+}
+
+@media screen and (max-width: 991px) {
+  .wrapperUpload {
+    text-align: center;
+    padding: 30px 30px;
+    border: 1px dashed #9ea0a5;
+    width: 100%;
+
+    border-radius: 4px;
+  }
 }

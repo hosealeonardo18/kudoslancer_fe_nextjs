@@ -1,6 +1,5 @@
 {
-  "jobseekers": [
-    {
+  "jobseekers": [{
       "id": 1,
       "fullname": "Hosea Leonardo",
       "email": "hosealeonardo18@gmail.com",
@@ -54,8 +53,7 @@
       "company_name": "PT Warna Warni"
     }
   ],
-  "experiences": [
-    {
+  "experiences": [{
       "id": 1,
       "position": "Frontend Developer",
       "company_name": "PT Maju Terus",
@@ -104,8 +102,7 @@
       "id": 5
     }
   ],
-  "skills": [
-    {
+  "skills": [{
       "id": 1,
       "skill_name": "Javascript",
       "jobseekerId": "2"
@@ -171,8 +168,7 @@
       "id": 13
     }
   ],
-  "categories": [
-    {
+  "categories": [{
       "id": 1,
       "categories_name": "Remote"
     },
@@ -185,8 +181,7 @@
       "categories_name": "Hybrid"
     }
   ],
-  "portfolios": [
-    {
+  "portfolios": [{
       "id": 1,
       "application_name": "KasirKu",
       "link_repository": "https://github.com/example",
@@ -231,20 +226,18 @@
       "id": 6
     }
   ],
-  "recruiters": [
-    {
-      "id": 1,
-      "fullname": "Caca",
-      "email": "caca@gmail.com",
-      "no_telp": "087880724111",
-      "company_name": "PT Era Jaya",
-      "company_field": "Finance",
-      "city": "PT Maju Terus",
-      "description": "saya seorang pekerja keras",
-      "instagram": "cacamarica",
-      "linkedin": "caca marica",
-      "image": "",
-      "image_thumbnail": ""
-    }
-  ]
+  "recruiters": [{
+    "id": 1,
+    "fullname": "Caca",
+    "email": "caca@gmail.com",
+    "no_telp": "087880724111",
+    "company_name": "PT Era Jaya",
+    "company_field": "Finance",
+    "city": "PT Maju Terus",
+    "description": "saya seorang pekerja keras",
+    "instagram": "cacamarica",
+    "linkedin": "caca marica",
+    "image": "",
+    "image_thumbnail": ""
+  }]
 }

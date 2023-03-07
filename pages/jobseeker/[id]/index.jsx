@@ -34,45 +34,40 @@ export default function ProfileDetail() {
   const [skills, setSkills] = useState([]);
   const [experiences, setExperiences] = useState([]);
   const [portfolios, setPortfolios] = useState([]);
+  const [role, setRole] = useState('');
+  console.log(role);
 
-  console.log(portfolios);
-
-  // get jobseekers
   useEffect(() => {
+    setRole(localStorage.getItem('role'));
+    // get jobseekers
     axios
-      .get(`http://localhost:3030/jobseekers/${id}`)
+      .get(`http://localhost:4000/jobseeker/${id}`)
       .then((response) => {
-        setJobseekersId(response.data);
+        setJobseekersId(response.data.data);
       })
       .catch((err) => console.log(err));
-  }, [id]);
 
-  // get skill by id
-  useEffect(() => {
+    // // get skill by id
     axios
-      .get(`http://localhost:3030/skills?jobseekerId=${id}`)
+      .get(`http://localhost:4000/skill/detail/jobseekerId/${id}`)
       .then((response) => {
-        setSkills(response.data);
+        setSkills(response.data.data);
       })
       .catch((err) => console.log(err));
-  }, [id]);
 
-  // get experience by id
-  useEffect(() => {
+    // // get experience by id
     axios
-      .get(`http://localhost:3030/experiences?jobseekerId=${id}`)
+      .get(`http://localhost:4000/experience/detail/jobseeker/${id}`)
       .then((response) => {
-        setExperiences(response.data);
+        setExperiences(response.data.data);
       })
       .catch((err) => console.log(err));
-  }, [id]);
 
-  // get portfolios
-  useEffect(() => {
+    // // get portfolios
     axios
-      .get(`http://localhost:3030/portfolios?jobseekerId=${id}`)
+      .get(`http://localhost:4000/portfolio/detail/jobseeker/${id}`)
       .then((response) => {
-        setPortfolios(response.data);
+        setPortfolios(response.data.data);
       })
       .catch((err) => console.log(err));
   }, [id]);
@@ -84,21 +79,27 @@ export default function ProfileDetail() {
         <div className="row mt-5 mb-5">
           <div className="col-md-4 col-sm-12 mb-5" data-aos="fade-right" data-aos-duration="1000">
             <div className={style.wrapperCard}>
-              <Image src={img} alt="img" className={style.imageCard} />
-              <h5 className={style.titleName}>{jobseekersId.fullname}</h5>
-              <span className={style.job}>{jobseekersId.position}</span>
+              <Image src={img} alt="img" width={150} height={150} className={style.imageCard} crossOrigin="anonymous" />
+              <h5 className={style.titleName}>{jobseekersId?.fullname}</h5>
+              <span className={style.job}>{jobseekersId?.position}</span>
               <div className={style.wrapperLocation}>
                 <i className="bi bi-pin-map-fill me-2" />
-                <span className={style.location}>{jobseekersId.city}</span>
+                <span className={style.location}>{jobseekersId?.city}</span>
               </div>
 
-              <p className={style.description}>{jobseekersId.description}</p>
+              <p className={style.description}>{jobseekersId?.description}</p>
 
-              <button className={style.buttonHire} onClick={() => window.location.replace(`/hire/${router.query.id}`)}>
-                Hire
-              </button>
+              {role === 'jobseeker' ? (
+                <button className={`d-none ${style.buttonHire}`} onClick={() => window.location.replace(`/hire/${router.query.id}`)}>
+                  Hire
+                </button>
+              ) : (
+                <button className={`${style.buttonHire}`} onClick={() => window.location.replace(`/hire/${router.query.id}`)}>
+                  Hire
+                </button>
+              )}
 
-              <h3 className="mt-4">Skill</h3>
+              <h3 className="mt-4 ">Skill</h3>
               <div className={style.wrapperSkills}>
                 {skills?.map((item) => {
                   return <span className={style.skills}>{item.skill_name}</span>;
@@ -108,17 +109,17 @@ export default function ProfileDetail() {
               <ul className={style.listSocials}>
                 <li className={style.listSocial}>
                   <i className={`bi bi-envelope ${style.icon}`} />
-                  <span className={style.titleIcon}>{jobseekersId.email}</span>
+                  <span className={style.titleIcon}>{jobseekersId?.email}</span>
                 </li>
 
                 <li className={style.listSocial}>
                   <i className={`bi bi-instagram ${style.icon}`} />
-                  <span className={style.titleIcon}>{jobseekersId.instagram}</span>
+                  <span className={style.titleIcon}>{jobseekersId?.instagram}</span>
                 </li>
 
                 <li className={style.listSocial}>
                   <i className={`bi bi-github ${style.icon}`} />
-                  <span className={style.titleIcon}>{jobseekersId.github}</span>
+                  <span className={style.titleIcon}>{jobseekersId?.github}</span>
                 </li>
               </ul>
             </div>

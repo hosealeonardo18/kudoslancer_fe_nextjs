@@ -11,14 +11,18 @@ import CardExperience from '@/components/CardExperience';
 import Footer from '@/components/Footer';
 
 export async function getServerSideProps({ params }) {
-  const res = await axios.get(`http://localhost:3030/jobseekers/${params.id}?_embed=experiences&_embed=skills&_embed=portfolios`);
+  const res = await axios.get(`http://localhost:3030/jobseekers/${params.id}`);
+  const resSkill = await axios.get(`http://localhost:3030/skills?jobseekerId=${params.id}`);
+  const resExp = await axios.get(`http://localhost:3030/experiences?jobseekerId=${params.id}`);
+  const resPort = await axios.get(`http://localhost:3030/portfolios?jobseekerId=${params.id}`);
 
   return {
-    props: { jobseeker: res.data },
+    props: { jobseeker: res.data, skill: resSkill.data, experience: resExp.data, portfolio: resPort.data },
   };
 }
 
 const SSR = (jobseeker) => {
+  console.log(jobseeker.experience);
   return (
     <div className={style.bgBody}>
       <Navbar />
@@ -42,7 +46,7 @@ const SSR = (jobseeker) => {
 
               <h3 className="mt-4">Skill</h3>
               <div className={style.wrapperSkills}>
-                {jobseeker.jobseeker.skills?.map((item) => {
+                {jobseeker.skill?.map((item) => {
                   return <span className={style.skills}>{item.skill_name}</span>;
                 })}
               </div>
@@ -84,10 +88,10 @@ const SSR = (jobseeker) => {
                 <div className="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
                   <div className="container">
                     <div className="row mt-5">
-                      {jobseeker.jobseeker.portfolios?.length < 1 ? (
+                      {jobseeker.portfolio?.length < 1 ? (
                         <h3>Data not Found!</h3>
                       ) : (
-                        jobseeker.jobseeker.portfolios?.map((expe) => {
+                        jobseeker.portfolio?.map((expe) => {
                           return <CardPorto img={porto1} titleName={expe.application_name} />;
                         })
                       )}
@@ -97,10 +101,10 @@ const SSR = (jobseeker) => {
                 <div className="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
                   <div className="container">
                     <div className="row my-5">
-                      {jobseeker.jobseeker.experiences?.length < 1 ? (
+                      {jobseeker.experience?.length < 1 ? (
                         <h3>Data not Found!</h3>
                       ) : (
-                        jobseeker.jobseeker.experiences?.map((expe) => {
+                        jobseeker.experience?.map((expe) => {
                           return <CardExperience img={experience} titleName={expe.position} company={expe.company_name} desc={expe.description} />;
                         })
                       )}

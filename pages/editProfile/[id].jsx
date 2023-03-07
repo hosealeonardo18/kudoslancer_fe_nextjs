@@ -10,19 +10,24 @@ import Footer from '@/components/Footer';
 import Form from '@/components/Form';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 export default function EditProfile() {
   const router = useRouter();
-  const { id } = router.query;
-
+  const { id } = router?.query;
+  const [role, setRole] = useState('');
+  const [token, setToken] = useState('');
   const [jobseeker, setJobseeker] = useState([]);
+
+  const [recruiter, setRecruiter] = useState([]);
+
   const [experiences, setExperiences] = useState({
     position: '',
     company_name: '',
     date_before: '',
     date_after: '',
     description: '',
-    jobseekerId: id,
+    image: '',
   });
 
   const [skill, setSkill] = useState({
@@ -33,15 +38,20 @@ export default function EditProfile() {
   const [portofolio, setPortfolio] = useState({
     application_name: '',
     link_repository: '',
-    jobseekerId: id,
+    image: '',
   });
 
-  console.log(portofolio);
-
   const handleChange = (e) => {
+    e.preventDefault();
     setJobseeker({
       ...jobseeker,
       [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleUpload = (e) => {
+    setJobseeker((prev) => {
+      return { ...prev, image: e.target.files[0] };
     });
   };
 
@@ -59,6 +69,12 @@ export default function EditProfile() {
     });
   };
 
+  const handleUploadExp = (e) => {
+    setExperiences((prev) => {
+      return { ...prev, image: e.target.files[0] };
+    });
+  };
+
   const handleChangePort = (e) => {
     setPortfolio({
       ...portofolio,
@@ -66,24 +82,52 @@ export default function EditProfile() {
     });
   };
 
+  const handleUploadPort = (e) => {
+    setPortfolio((prev) => {
+      return { ...prev, image: e.target.files[0] };
+    });
+  };
+
   const handleEdit = (e) => {
     e.preventDefault();
 
+    const formData = new FormData();
+
+    for (let attr in jobseeker) {
+      formData.append(attr, jobseeker[attr]);
+    }
+
     axios
-      .put(`http://localhost:3030/jobseekers/${id}`, jobseeker)
-      .then((response) => {
-        alert('Update Data Success');
-        window.location.reload();
+      .put(`${process.env.API_KUDOSLANCER}/jobseeker/${id}`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          Authorization: `Bearer ${token}`,
+        },
       })
-      .catch((err) => alert(`${err.response}`));
+      .then((response) => {
+        console.log(response.data);
+
+        Swal.fire({
+          title: `${response.data.message}`,
+          text: `Updated`,
+          icon: 'success',
+        });
+        // window.location.reload();
+      })
+      .catch((err) => alert(`${err.response.data}`));
   };
 
   const handleSubmitSkill = (e) => {
     e.preventDefault();
     axios
-      .post(`http://localhost:3030/skills`, skill)
+      .post(`${process.env.API_KUDOSLANCER}/skill/jobseekerId`, skill, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
       .then((response) => {
-        alert('Created Data Success');
+        console.log(response.data.message);
+        alert(`${response.data.message}`);
         window.location.reload();
       })
       .catch((err) => alert(`${err.response}`));
@@ -91,10 +135,25 @@ export default function EditProfile() {
 
   const handleSubmitExp = (e) => {
     e.preventDefault();
+    const formData = new FormData();
+
+    for (let attr in experiences) {
+      formData.append(attr, experiences[attr]);
+    }
     axios
-      .post(`http://localhost:3030/experiences`, experiences)
+      .post(`${process.env.API_KUDOSLANCER}/experience`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          Authorization: `Bearer ${token}`,
+        },
+      })
       .then((response) => {
-        alert('Created Experiences Success');
+        console.log(response);
+        Swal.fire({
+          title: `${response.data.message}`,
+          text: `New Experience have been added`,
+          icon: 'success',
+        });
         window.location.reload();
       })
       .catch((err) => alert(`${err.response}`));
@@ -102,10 +161,25 @@ export default function EditProfile() {
 
   const handleSubmitPort = (e) => {
     e.preventDefault();
+    const formData = new FormData();
+
+    for (let attr in portofolio) {
+      formData.append(attr, portofolio[attr]);
+    }
     axios
-      .post(`http://localhost:3030/portfolios`, portofolio)
+      .post(`${process.env.API_KUDOSLANCER}/portfolio`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          Authorization: `Bearer ${token}`,
+        },
+      })
       .then((response) => {
-        alert('Created Portfolio Success');
+        console.log(response);
+        Swal.fire({
+          title: `${response.data.message}`,
+          text: `New Portfolio have been added`,
+          icon: 'success',
+        });
         window.location.reload();
       })
       .catch((err) => alert(`${err.response}`));
@@ -113,166 +187,245 @@ export default function EditProfile() {
 
   // get data
   useEffect(() => {
+    setRole(localStorage.getItem('role'));
+    setToken(localStorage.getItem('token'));
+
     axios
-      .get(`http://localhost:3030/jobseekers/${id}`)
+      .get(`${process.env.API_KUDOSLANCER}/jobseeker/${id}`)
       .then((response) => {
-        setJobseeker(response.data);
+        setJobseeker(response.data.data);
+      })
+      .catch((err) => console.log(err));
+
+    // get data recruiter
+    axios
+      .get(`${process.env.API_KUDOSLANCER}/recruiter/${id}`)
+      .then((response) => {
+        setRecruiter(response.data.data);
       })
       .catch((err) => console.log(err));
   }, [id]);
 
-  return (
-    <div className={style.bgBody}>
-      <Navbar />
-      <div className="container">
-        <div className="row mt-5 mb-5">
-          <div className="col-md-4 col-sm-12 mb-5" data-aos="fade-right" data-aos-duration="1000">
-            <div className={style.wrapperCard}>
-              <Image src={img} alt="img" className={style.imageCard} />
-              <h5 className={style.titleName}>{jobseeker.fullname}</h5>
-              <span className={style.job}>{jobseeker.position}</span>
-              <div className={style.wrapperLocation}>
-                <i className="bi bi-pin-map-fill me-2" />
-                <span className={style.location}>{jobseeker.city}</span>
+  if (role === 'jobseeker') {
+    return (
+      <div className={style.bgBody}>
+        <Navbar />
+        <div className="container">
+          <div className="row mt-5 mb-5">
+            <div className="col-md-4 col-sm-12 mb-5" data-aos="fade-right" data-aos-duration="1000">
+              <div className={style.wrapperCard}>
+                <Image src={img} alt="img" className={style.imageCard} />
+                <h5 className={style.titleName}>{jobseeker?.fullname}</h5>
+                <span className={style.job}>{jobseeker?.position}</span>
+                <div className={style.wrapperLocation}>
+                  <i className="bi bi-pin-map-fill me-2" />
+                  <span className={style.location}>{jobseeker?.city}</span>
+                </div>
               </div>
-            </div>
-            <button className={style.buttonHire} type="button" onClick={handleEdit}>
-              Simpan
-            </button>
+              <button className={style.buttonHire} type="button" onClick={handleEdit}>
+                Simpan
+              </button>
 
-            <button className={style.buttonCancel} onClick={() => window.location.replace(`/`)}>
-              Batal
-            </button>
-          </div>
-
-          <div className="col-md-8 col-sm-12" data-aos="fade-left" data-aos-duration="1000">
-            {/* data diri */}
-            <div className={style.wrapperCard}>
-              <h3 className={style.textHeader}>Data diri</h3>
-              <hr />
-              <form onSubmit={handleEdit}>
-                <Form children="Nama Lengkap" placeholder="Masukan Nama Lengkap" type="text" name="fullname" value={jobseeker.fullname} change={handleChange} />
-
-                <Form children="Jobdesk " placeholder="Masukan Nama Jobdesk" type="text" name="position" value={jobseeker.position} change={handleChange} />
-
-                <Form children="Domisili" placeholder="Masukan Domisili" type="text" name="city" value={jobseeker.city} change={handleChange} />
-
-                <Form children="Tempat Kerja" placeholder="Masukan Tempat Kerja" type="text" name="company_name" value={jobseeker.company_name} change={handleChange} />
-              </form>
+              <button className={style.buttonCancel} onClick={() => window.location.replace(`/`)}>
+                Batal
+              </button>
             </div>
 
-            {/* skills */}
-            <div className={style.wrapperCard}>
-              <h3 className={style.textHeader}>Keahlian</h3>
-              <hr />
+            <div className="col-md-8 col-sm-12" data-aos="fade-left" data-aos-duration="1000">
+              {/* data diri */}
+              <div className={style.wrapperCard}>
+                <h3 className={style.textHeader}>Data diri</h3>
+                <hr />
+                <form onSubmit={handleEdit}>
+                  <Form children="Nama Lengkap" placeholder="Masukan Nama Lengkap" type="text" name="fullname" value={jobseeker?.fullname} change={handleChange} />
 
-              <form onSubmit={handleSubmitSkill}>
-                <div className={style.wrapperButton}>
-                  <input type="" placeholder="Java" name="skill_name" onChange={handleChangeSkill} value={skill.skill_name} className={`${style.input} form-control mt-2`} />
-                  {/* <Form placeholder="Java / PHP" type="text" name="fullname" value="" /> */}
-                  <button className={style.buttonSimpan} type="submit">
-                    Simpan
-                  </button>
-                </div>
-              </form>
-            </div>
+                  <Form children="Jobdesk " placeholder="Masukan Nama Jobdesk" type="text" name="position" value={jobseeker?.position} change={handleChange} />
 
-            {/* Experiences */}
-            <div className={style.wrapperCard}>
-              <h3 className={style.textHeader}>Pengalaman Kerja</h3>
-              <hr />
-              <form onSubmit={handleSubmitExp}>
-                <Form children="Posisi" placeholder="Web developer" type="text" name="position" change={handleChangeExp} />
+                  <Form children="Domisili" placeholder="Masukan Domisili" type="text" name="city" value={jobseeker?.city} change={handleChange} />
 
-                <Form children="Nama Perusahaan " placeholder="Masukan Nama Perusahaan" type="text" name="company_name" change={handleChangeExp} />
+                  <Form children="Tempat Kerja" placeholder="Masukan Tempat Kerja" type="text" name="company_name" value={jobseeker?.company_name} change={handleChange} />
 
-                <div className="row">
-                  <div className="col-md-6">
-                    <Form children="Mulai Bekerja" type="date" name="date_before" value={setExperiences.date_before} change={handleChangeExp} />
-                  </div>
+                  <Form children="Instagram" placeholder="Masukan akun Instagram Anda" type="text" name="company_name" value={jobseeker?.company_name} change={handleChange} />
 
-                  <div className="col-md-6">
-                    <Form children="Selesai Bekerja" type="date" name="date_after" change={handleChangeExp} />
-                  </div>
-                </div>
-
-                <div className="form-floating p-2">
-                  <textarea className="form-control p-3" placeholder="Deskripsikan pekerjaan anda" id="floatingTextarea2" style={{ height: '100px' }} name="description" onChange={handleChangeExp} />
-                  <label htmlFor="floatingTextarea2" className="ms-2">
-                    Deskripsikan pekerjaan anda
-                  </label>
-                </div>
-
-                <button className={`mt-4 ${style.buttonAdd}`} type="submit">
-                  Tambah Pengalaman Kerja
-                </button>
-              </form>
-            </div>
-
-            {/* Portofolio */}
-            <div className={style.wrapperCard}>
-              <h3 className={style.textHeader}>Portofolio</h3>
-              <hr />
-
-              <form onSubmit={handleSubmitPort}>
-                <Form children="Nama Aplikasi" placeholder="Masukan nama aplikasi" type="text" name="application_name" value={portofolio.application_name} change={handleChangePort} />
-
-                <Form children="Link Repository" placeholder="Masukan Link Repository" type="text" name="link_repository" value={portofolio.link_repository} change={handleChangePort} />
-
-                <div className="row">
-                  <div className="col-md-6">
-                    <div className="form-check">
-                      <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
-                      <label className="form-check-label" htmlFor="flexRadioDefault1">
-                        Aplikasi Mobile
-                      </label>
-                    </div>
-                  </div>
-
-                  <div className="col-md-6">
-                    <div className="form-check" style={{ height: '50px' }}>
-                      <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" defaultChecked />
-                      <label className="form-check-label" htmlFor="flexRadioDefault2">
-                        Aplikasi Web
-                      </label>
-                    </div>
-                  </div>
-                </div>
-
-                <div className={style.wrapperUpload}>
-                  <Image src={iconCloud} alt="image" />
-                  <div className="mb-3 mt-3">
-                    <label htmlFor="formFile" className="form-label">
-                      Default file input example
+                  <div className="form-floating p-0">
+                    <textarea className="form-control p-3" placeholder="Deskripsikan pekerjaan anda" id="floatingTextarea2" style={{ height: '100px' }} name="description" onChange={handleChange} />
+                    <label htmlFor="floatingTextarea2" className="ms-2">
+                      Tuliskan deskripsi singkat
                     </label>
-                    <input className="form-control" type="file" id="formFile" />
                   </div>
 
-                  <span className={style.rules}>Drag & Drop untuk Upload Gambar Aplikasi Mobile</span>
-                  <span className={style.subRules}>DAtau cari untuk mengupload file dari direktorimu.</span>
+                  <div className="mb-3 mt-3">
+                    <label for="formFile" className="form-label">
+                      Image
+                    </label>
+                    <input className="form-control" type="file" id="formFile" name="image" onChange={handleUpload} />
+                  </div>
+                </form>
+              </div>
 
-                  <div className={style.wrapperCardRulesImg}>
-                    <div className={style.wrapperImg}>
-                      <Image src={iconExt} alt="img" />
-                      <span>High-Res Image PNG, JPG or GIF </span>
+              {/* skills */}
+              <div className={style.wrapperCard}>
+                <h3 className={style.textHeader}>Keahlian</h3>
+                <hr />
+
+                <form onSubmit={handleSubmitSkill}>
+                  <div className={style.wrapperButton}>
+                    <input type="" placeholder="Java" name="skill_name" onChange={handleChangeSkill} value={skill.skill_name} className={`${style.input} form-control mt-2`} />
+                    {/* <Form placeholder="Java / PHP" type="text" name="fullname" value="" /> */}
+                    <button className={style.buttonSimpan} type="submit">
+                      Simpan
+                    </button>
+                  </div>
+                </form>
+              </div>
+
+              {/* Experiences */}
+              <div className={style.wrapperCard}>
+                <h3 className={style.textHeader}>Pengalaman Kerja</h3>
+                <hr />
+                <form onSubmit={handleSubmitExp}>
+                  <Form children="Posisi" placeholder="Web developer" type="text" name="position" change={handleChangeExp} />
+
+                  <Form children="Nama Perusahaan " placeholder="Masukan Nama Perusahaan" type="text" name="company_name" change={handleChangeExp} />
+
+                  <div className="row">
+                    <div className="col-md-6">
+                      <Form children="Mulai Bekerja" type="date" name="date_before" value={experiences.date_before} change={handleChangeExp} />
                     </div>
 
-                    <div className={style.wrapperImg}>
-                      <Image src={iconExpand} alt="img" />
-                      <span>Size 1080x1920 or 600x800 </span>
+                    <div className="col-md-6">
+                      <Form children="Selesai Bekerja" type="date" name="date_after" change={handleChangeExp} />
                     </div>
                   </div>
-                </div>
 
-                <button className={`mt-4 ${style.buttonAdd}`} type="submit">
-                  Tambah Portofolio
-                </button>
-              </form>
+                  <div className="form-floating p-2">
+                    <textarea className="form-control p-3" placeholder="Deskripsikan pekerjaan anda" id="floatingTextarea2" style={{ height: '100px' }} name="description" onChange={handleChangeExp} />
+                    <label htmlFor="floatingTextarea2" className="ms-2">
+                      Deskripsikan pekerjaan anda
+                    </label>
+                  </div>
+
+                  <div className="mb-3 mt-3">
+                    <label for="formFile" className="form-label">
+                      Image
+                    </label>
+                    <input className="form-control" type="file" id="formFile" name="image" onChange={handleUploadExp} />
+                  </div>
+
+                  <button className={`mt-4 ${style.buttonAdd}`} type="submit">
+                    Tambah Pengalaman Kerja
+                  </button>
+                </form>
+              </div>
+
+              {/* Portofolio */}
+              <div className={style.wrapperCard}>
+                <h3 className={style.textHeader}>Portofolio</h3>
+                <hr />
+
+                <form onSubmit={handleSubmitPort}>
+                  <Form children="Nama Aplikasi" placeholder="Masukan nama aplikasi" type="text" name="application_name" value={portofolio.application_name} change={handleChangePort} />
+
+                  <Form children="Link Repository" placeholder="Masukan Link Repository" type="text" name="link_repository" value={portofolio.link_repository} change={handleChangePort} />
+
+                  <div className="row">
+                    <div className="col-md-6">
+                      <div className="form-check">
+                        <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
+                        <label className="form-check-label" htmlFor="flexRadioDefault1">
+                          Aplikasi Mobile
+                        </label>
+                      </div>
+                    </div>
+
+                    <div className="col-md-6">
+                      <div className="form-check" style={{ height: '50px' }}>
+                        <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" defaultChecked />
+                        <label className="form-check-label" htmlFor="flexRadioDefault2">
+                          Aplikasi Web
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className={style.wrapperUpload}>
+                    <Image src={iconCloud} alt="image" className="mb-3" />
+                    <div className="my-4 text-center">
+                      <input type="file" id="formFile" name="image" onChange={handleUploadPort} />
+                    </div>
+
+                    <span className={style.rules}>Drag & Drop untuk Upload Gambar Aplikasi Mobile</span>
+                    <span className={style.subRules}>DAtau cari untuk mengupload file dari direktorimu.</span>
+
+                    <div className={style.wrapperCardRulesImg}>
+                      <div className={style.wrapperImg}>
+                        <Image src={iconExt} alt="img" className="me-2" />
+                        <span>High-Res Image PNG, JPG or GIF </span>
+                      </div>
+
+                      <div className={style.wrapperImg}>
+                        <Image src={iconExpand} alt="img" className="me-2" />
+                        <span>Size 1080x1920 or 600x800 </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <button className={`mt-4 ${style.buttonAdd}`} type="submit">
+                    Tambah Portofolio
+                  </button>
+                </form>
+              </div>
             </div>
           </div>
         </div>
+        <Footer />
       </div>
-      <Footer />
-    </div>
-  );
+    );
+  } else {
+    return (
+      <div className={style.bgBody}>
+        <Navbar />
+        <div className="container">
+          <div className="row mt-5 mb-5">
+            <div className="col-md-4 col-sm-12 mb-5" data-aos="fade-right" data-aos-duration="1000">
+              <div className={style.wrapperCard}>
+                <Image src={img} alt="img" className={style.imageCard} />
+                <h5 className={style.titleName}>{recruiter[0]?.fullname}</h5>
+                <span className={style.job}>{recruiter[0]?.position}</span>
+                <div className={style.wrapperLocation}>
+                  <i className="bi bi-pin-map-fill me-2" />
+                  <span className={style.location}>{recruiter[0]?.city}</span>
+                </div>
+              </div>
+              <button className={style.buttonHire} type="button" onClick={handleEdit}>
+                Simpan
+              </button>
+
+              <button className={style.buttonCancel} onClick={() => window.location.replace(`/`)}>
+                Batal
+              </button>
+            </div>
+
+            <div className="col-md-8 col-sm-12" data-aos="fade-left" data-aos-duration="1000">
+              {/* data diri */}
+              <div className={style.wrapperCard}>
+                <h3 className={style.textHeader}>Data diri</h3>
+                <hr />
+                <form onSubmit={handleEdit}>
+                  <Form children="Nama Lengkap" placeholder="Masukan Nama Lengkap" type="text" name="fullname" value={jobseeker?.fullname} change={handleChange} />
+
+                  <Form children="Jobdesk " placeholder="Masukan Nama Jobdesk" type="text" name="position" value={jobseeker?.position} change={handleChange} />
+
+                  <Form children="Domisili" placeholder="Masukan Domisili" type="text" name="city" value={jobseeker?.city} change={handleChange} />
+
+                  <Form children="Tempat Kerja" placeholder="Masukan Tempat Kerja" type="text" name="company_name" value={jobseeker?.company_name} change={handleChange} />
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <Footer />
+      </div>
+    );
+  }
 }

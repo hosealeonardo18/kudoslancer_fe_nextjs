@@ -3,20 +3,24 @@ import Link from 'next/link';
 import style from './navbar.module.css';
 import img from '../../public/images/Profile/formal.png';
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 
 export default function Navbar() {
   const [login, setLogin] = useState('');
+  const [profile, setProfile] = useState([]);
+  const router = useRouter();
 
   useEffect(() => {
     setLogin(localStorage.getItem('token'));
+    setProfile(localStorage.getItem('id'));
   });
 
   const handleLogout = () => {
     localStorage.removeItem('token');
-    window.location.reload();
+    router.push('/');
   };
 
-  if (login === 'token') {
+  if (login) {
     return (
       <nav className={`navbar navbar-expand-lg ${style.navbar} sticky-top`}>
         <div className="container">
@@ -33,11 +37,13 @@ export default function Navbar() {
                   Home
                 </Link>
               </li>
+
               <li className="nav-item mx-3">
                 <Link className={`nav-link ${style.navLink}`} href={`/jobs`}>
                   Jobs
                 </Link>
               </li>
+
               <li className="nav-item mx-3">
                 <Link className={`nav-link ${style.navLink}`} href={`/jobseeker`}>
                   Hiring
@@ -58,6 +64,11 @@ export default function Navbar() {
                 <Image src={img} className={style.imageProfile} />
               </button>
               <ul className="dropdown-menu">
+                <li>
+                  <Link className="dropdown-item" href={`/editProfile/${profile}`}>
+                    profile
+                  </Link>
+                </li>
                 <li>
                   <Link className="dropdown-item" href="" onClick={handleLogout}>
                     Logout
@@ -98,7 +109,7 @@ export default function Navbar() {
               </li>
             </ul>
 
-            <Link className={style.buttonLogin} href={`authRecruiter/login`}>
+            <Link className={style.buttonLogin} href={`auth/login`}>
               Login
             </Link>
 

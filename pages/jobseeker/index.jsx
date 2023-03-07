@@ -15,9 +15,9 @@ export default function jobseeker() {
 
   useEffect(() => {
     axios
-      .get('http://localhost:3030/jobseekers')
+      .get('http://localhost:4000/jobseeker')
       .then((response) => {
-        setJobseekers(response.data);
+        setJobseekers(response.data.data);
       })
       .catch((err) => console.log(err));
   }, []);

@@ -30,10 +30,19 @@ export default function register() {
     e.preventDefault();
 
     axios
-      .post('http://localhost:3030/jobseekers', register)
+      .post('http://localhost:4000/jobseeker/auth/register', register)
       .then((res) => {
-        Swal.fire('Register Success!', 'You clicked the button!', 'success');
-        router.push('/login');
+        console.log(res);
+        if (res.data.message !== 'Register Jobseeker Success!') {
+          Swal.fire({
+            icon: 'error',
+            title: `${res.data.message}`,
+            text: 'Something went wrong!',
+          });
+        } else {
+          Swal.fire(`${res.data.message}`, 'You clicked the button!', 'success');
+          router.push('/auth/login');
+        }
       })
       .catch((err) =>
         Swal.fire({
@@ -74,8 +83,16 @@ export default function register() {
                       <div className="mb-3 form-group text-center mt-5">
                         <ButtonAuth Button="Register" />
                       </div>
+
                       <div className="mt-3 text-center">
-                        <span className={`${style.haveAccount} mb-3`}>Don't have an account? </span>
+                        <span className={`${style.haveAccount} mb-3 me-2`}>Register as a recruiter ?</span>
+                        <Link className={`${style.anchorText} small text-decoration-none text-warning`} href={`/authRecruiter/register`}>
+                          Signup
+                        </Link>
+                      </div>
+
+                      <div className="mt-3 text-center">
+                        <span className={`${style.haveAccount} mb-3 me-2`}>Have an account? </span>
                         <Link className={`${style.anchorText} small text-decoration-none text-warning`} href={`/auth/login`}>
                           Login
                         </Link>

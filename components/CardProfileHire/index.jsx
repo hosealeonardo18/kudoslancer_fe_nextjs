@@ -19,12 +19,12 @@ export default function CardProfileHire({ img, titleName, job, location, id }) {
   // get skill by id
   useEffect(() => {
     axios
-      .get(`http://localhost:3030/skills?jobseekerId=${id}`)
+      .get(`http://localhost:4000/skill/detail/jobseekerId/${id}`)
       .then((response) => {
-        setSkills(response.data);
+        setSkills(response.data.data);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [id]);
 
   return (
     <div className="container mb-1">
@@ -41,8 +41,8 @@ export default function CardProfileHire({ img, titleName, job, location, id }) {
               </div>
 
               <div className={style.wrapperSkills}>
-                {skills.map((item) => (
-                  <span className={style.skills}>{item.skill_name}</span>
+                {skills?.map((item) => (
+                  <span className={style.skills}>{item?.skill_name}</span>
                 ))}
               </div>
             </div>
