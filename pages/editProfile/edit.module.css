@@ -17,6 +17,8 @@
   height: 150px;
   margin: auto;
   margin-bottom: 30px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .titleName {
@@ -162,6 +164,10 @@
 
 .wrapperImg {
   margin: 20px 10px;
+}
+
+.titleNameRecruiter {
+  font-size: 1.2em;
 }
 
 @media screen and (max-width: 991px) {

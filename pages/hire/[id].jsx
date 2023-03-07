@@ -18,9 +18,9 @@ export default function hire() {
   // get data jobseeker by id
   useEffect(() => {
     axios
-      .get(`http://localhost:3030/jobseekers/${id}`)
+      .get(`${process.env.API_KUDOSLANCER}/jobseeker/${id}`)
       .then((response) => {
-        setJobseekersId(response.data);
+        setJobseekersId(response.data.data);
       })
       .catch((err) => console.log(err));
   }, [id]);
@@ -42,15 +42,15 @@ export default function hire() {
         <div className="row mt-5 mb-5">
           <div className="col-md-4 col-sm-12 mb-5">
             <div className={style.wrapperCard}>
-              <Image src={img} alt="img" className={style.imageCard} />
-              <h5 className={style.titleName}>{jobseekersId.fullname}</h5>
-              <span className={style.job}>{jobseekersId.position}</span>
+              <Image src={jobseekersId?.image} width={150} height={150} alt="img" className={style.imageCard} />
+              <h5 className={style.titleName}>{jobseekersId?.fullname}</h5>
+              <span className={style.job}>{jobseekersId?.position}</span>
               <div className={style.wrapperLocation}>
                 <i className="bi bi-pin-map-fill me-2" />
-                <span className={style.location}>{jobseekersId.city}</span>
+                <span className={style.location}>{jobseekersId?.city}</span>
               </div>
 
-              <p className={style.description}>{jobseekersId.description}</p>
+              <p className={style.description}>{jobseekersId?.description}</p>
 
               <h3 className="mt-4">Skill</h3>
               <div className={style.wrapperSkills}>
@@ -62,7 +62,7 @@ export default function hire() {
           </div>
           <div className="col-md-8 col-sm-12">
             <div className={style.wrapperCard}>
-              <h2 className={style.titleHeader}>Hubungi {jobseekersId.fullname}</h2>
+              <h2 className={style.titleHeader}>Hubungi {jobseekersId?.fullname}</h2>
               <span className={style.subTitle}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.</span>
 
               <div className="row mt-5 d-flex justify-content-center">

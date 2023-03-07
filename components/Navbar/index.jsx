@@ -7,12 +7,16 @@ import { useRouter } from 'next/router';
 
 export default function Navbar() {
   const [login, setLogin] = useState('');
+  const [role, setRole] = useState('');
   const [profile, setProfile] = useState([]);
+  const [image, setImage] = useState([]);
   const router = useRouter();
 
   useEffect(() => {
     setLogin(localStorage.getItem('token'));
     setProfile(localStorage.getItem('id'));
+    setRole(localStorage.getItem('role'));
+    setImage(localStorage.getItem('image'));
   });
 
   const handleLogout = () => {
@@ -61,13 +65,19 @@ export default function Navbar() {
 
             <div className="dropdown-center">
               <button className={style.buttonProfile} type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <Image src={img} className={style.imageProfile} />
+                <Image src={image} width={35} height={35} alt="img" className={style.imageProfile} />
               </button>
               <ul className="dropdown-menu">
                 <li>
-                  <Link className="dropdown-item" href={`/editProfile/${profile}`}>
-                    profile
-                  </Link>
+                  {role !== 'recruiter' ? (
+                    <Link className="dropdown-item" href={`/editProfile/${profile}`}>
+                      profile
+                    </Link>
+                  ) : (
+                    <Link className="dropdown-item" href={`/profileCompany/${profile}`}>
+                      profile
+                    </Link>
+                  )}
                 </li>
                 <li>
                   <Link className="dropdown-item" href="" onClick={handleLogout}>

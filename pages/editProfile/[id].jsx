@@ -17,6 +17,7 @@ export default function EditProfile() {
   const { id } = router?.query;
   const [role, setRole] = useState('');
   const [token, setToken] = useState('');
+  const [idUser, setIdUser] = useState('');
   const [jobseeker, setJobseeker] = useState([]);
 
   const [recruiter, setRecruiter] = useState([]);
@@ -106,7 +107,6 @@ export default function EditProfile() {
       })
       .then((response) => {
         console.log(response.data);
-
         Swal.fire({
           title: `${response.data.message}`,
           text: `Updated`,
@@ -127,7 +127,11 @@ export default function EditProfile() {
       })
       .then((response) => {
         console.log(response.data.message);
-        alert(`${response.data.message}`);
+        Swal.fire({
+          title: `${response.data.message}`,
+          text: `Skill Created`,
+          icon: 'success',
+        });
         window.location.reload();
       })
       .catch((err) => alert(`${err.response}`));
@@ -185,10 +189,53 @@ export default function EditProfile() {
       .catch((err) => alert(`${err.response}`));
   };
 
+  // recruiter
+  const handleChangeRecruiter = (e) => {
+    e.preventDefault();
+    setRecruiter({
+      ...recruiter,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleUploadRecruiter = (e) => {
+    setRecruiter((prev) => {
+      return { ...prev, image: e.target.files[0] };
+    });
+  };
+
+  const handleSubmitRecruiter = (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+
+    for (let attr in recruiter) {
+      formData.append(attr, recruiter[attr]);
+    }
+
+    axios
+      .put(`${process.env.API_KUDOSLANCER}/recruiter/${idUser}`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => {
+        console.log(response.data.data);
+        Swal.fire({
+          title: `${response.data.message}`,
+          text: `Recruiter Updated`,
+          icon: 'success',
+        });
+        window.location.reload();
+      })
+      .catch((err) => alert(`${err}`));
+  };
+
   // get data
   useEffect(() => {
     setRole(localStorage.getItem('role'));
     setToken(localStorage.getItem('token'));
+    setIdUser(localStorage.getItem('id'));
 
     axios
       .get(`${process.env.API_KUDOSLANCER}/jobseeker/${id}`)
@@ -214,7 +261,7 @@ export default function EditProfile() {
           <div className="row mt-5 mb-5">
             <div className="col-md-4 col-sm-12 mb-5" data-aos="fade-right" data-aos-duration="1000">
               <div className={style.wrapperCard}>
-                <Image src={img} alt="img" className={style.imageCard} />
+                <Image src={jobseeker?.image} width={150} height={150} alt="img" crossOrigin="true" className={style.imageCard} />
                 <h5 className={style.titleName}>{jobseeker?.fullname}</h5>
                 <span className={style.job}>{jobseeker?.position}</span>
                 <div className={style.wrapperLocation}>
@@ -245,7 +292,9 @@ export default function EditProfile() {
 
                   <Form children="Tempat Kerja" placeholder="Masukan Tempat Kerja" type="text" name="company_name" value={jobseeker?.company_name} change={handleChange} />
 
-                  <Form children="Instagram" placeholder="Masukan akun Instagram Anda" type="text" name="company_name" value={jobseeker?.company_name} change={handleChange} />
+                  <Form children="Instagram" placeholder="Masukan akun Instagram Anda" type="text" name="instagram" value={jobseeker?.instagram} change={handleChange} />
+
+                  <Form children="Github" placeholder="Masukan link github Anda" type="text" name="github" value={jobseeker?.github} change={handleChange} />
 
                   <div className="form-floating p-0">
                     <textarea className="form-control p-3" placeholder="Deskripsikan pekerjaan anda" id="floatingTextarea2" style={{ height: '100px' }} name="description" onChange={handleChange} />
@@ -389,15 +438,16 @@ export default function EditProfile() {
           <div className="row mt-5 mb-5">
             <div className="col-md-4 col-sm-12 mb-5" data-aos="fade-right" data-aos-duration="1000">
               <div className={style.wrapperCard}>
-                <Image src={img} alt="img" className={style.imageCard} />
-                <h5 className={style.titleName}>{recruiter[0]?.fullname}</h5>
-                <span className={style.job}>{recruiter[0]?.position}</span>
+                <Image src={recruiter?.image} width={150} height={150} alt="img" className={style.imageCard} />
+                <h5 className={style.titleName}>{recruiter?.company_name}</h5>
+                <h5 className={style.titleNameRecruiter}>{recruiter?.fullname}</h5>
+                <span className={style.job}>{recruiter?.company_field}</span>
                 <div className={style.wrapperLocation}>
                   <i className="bi bi-pin-map-fill me-2" />
-                  <span className={style.location}>{recruiter[0]?.city}</span>
+                  <span className={style.location}>{recruiter?.city}</span>
                 </div>
               </div>
-              <button className={style.buttonHire} type="button" onClick={handleEdit}>
+              <button className={style.buttonHire} type="button" onClick={handleSubmitRecruiter}>
                 Simpan
               </button>
 
@@ -411,14 +461,27 @@ export default function EditProfile() {
               <div className={style.wrapperCard}>
                 <h3 className={style.textHeader}>Data diri</h3>
                 <hr />
-                <form onSubmit={handleEdit}>
-                  <Form children="Nama Lengkap" placeholder="Masukan Nama Lengkap" type="text" name="fullname" value={jobseeker?.fullname} change={handleChange} />
+                <form onSubmit={handleSubmitRecruiter}>
+                  <Form children="Nama Lengkap" placeholder="Masukan Nama Lengkap" type="text" name="fullname" value={recruiter?.fullname} change={handleChangeRecruiter} />
 
-                  <Form children="Jobdesk " placeholder="Masukan Nama Jobdesk" type="text" name="position" value={jobseeker?.position} change={handleChange} />
+                  <Form children="Jobdesk " placeholder="Masukan Nama Jobdesk" type="text" name="company_field" value={recruiter?.company_field} change={handleChangeRecruiter} />
 
-                  <Form children="Domisili" placeholder="Masukan Domisili" type="text" name="city" value={jobseeker?.city} change={handleChange} />
+                  <Form children="Nama Perusahaan" placeholder="Masukan Nama Perusahaan" type="text" name="company_name" value={recruiter?.company_name} change={handleChangeRecruiter} />
 
-                  <Form children="Tempat Kerja" placeholder="Masukan Tempat Kerja" type="text" name="company_name" value={jobseeker?.company_name} change={handleChange} />
+                  <Form children="Domisili" placeholder="Masukan Domisili" type="text" name="city" value={recruiter?.city} change={handleChangeRecruiter} />
+
+                  <Form children="Nomor Telpon" placeholder="Masukan nomor Telpon" type="text" name="no_telp" value={recruiter?.no_telp} change={handleChangeRecruiter} />
+
+                  <Form children="Instagram" placeholder="Masukan akun Instagram" type="text" name="instagram" value={recruiter?.instagram} change={handleChangeRecruiter} />
+
+                  <Form children="Linkedin" placeholder="Masukan akun Linkedin" type="text" name="linkedin" value={recruiter?.linkedin} change={handleChangeRecruiter} />
+
+                  <div className="mb-3 mt-3">
+                    <label for="formFile" className="form-label">
+                      Image
+                    </label>
+                    <input className="form-control" type="file" id="formFile" name="image" onChange={handleUploadRecruiter} />
+                  </div>
                 </form>
               </div>
             </div>

@@ -41,7 +41,7 @@ export default function ProfileDetail() {
     setRole(localStorage.getItem('role'));
     // get jobseekers
     axios
-      .get(`http://localhost:4000/jobseeker/${id}`)
+      .get(`${process.env.API_KUDOSLANCER}/jobseeker/${id}`)
       .then((response) => {
         setJobseekersId(response.data.data);
       })
@@ -79,7 +79,7 @@ export default function ProfileDetail() {
         <div className="row mt-5 mb-5">
           <div className="col-md-4 col-sm-12 mb-5" data-aos="fade-right" data-aos-duration="1000">
             <div className={style.wrapperCard}>
-              <Image src={img} alt="img" width={150} height={150} className={style.imageCard} crossOrigin="anonymous" />
+              <Image src={jobseekersId?.image} alt="img" width={150} height={150} className={style.imageCard} crossOrigin="anonymous" />
               <h5 className={style.titleName}>{jobseekersId?.fullname}</h5>
               <span className={style.job}>{jobseekersId?.position}</span>
               <div className={style.wrapperLocation}>
@@ -147,7 +147,7 @@ export default function ProfileDetail() {
                         <h3>Data not Found!</h3>
                       ) : (
                         portfolios?.map((expe) => {
-                          return <CardPorto img={porto1} titleName={expe.application_name} />;
+                          return <CardPorto img={expe.image} titleName={expe.application_name} />;
                         })
                       )}
                     </div>
@@ -160,7 +160,7 @@ export default function ProfileDetail() {
                         <h3>Data not Found!</h3>
                       ) : (
                         experiences?.map((expe) => {
-                          return <CardExperience img={experience} titleName={expe.position} company={expe.company_name} desc={expe.description} />;
+                          return <CardExperience img={expe.image} titleName={expe.position} company={expe.company_name} desc={expe.description} />;
                         })
                       )}
                     </div>

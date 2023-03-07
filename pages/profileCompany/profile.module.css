@@ -1,0 +1,113 @@
+.col {
+  padding: 115px 0;
+  border-radius: 4px;
+}
+
+.accsent {
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 200px;
+  background-color: #5e50a1;
+  border-radius: 4px 4px 0 0;
+  top: 0;
+}
+
+.imageThumbnail {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.company_name {
+  font-size: 1.7em;
+  font-weight: 700;
+  margin-top: 30px;
+}
+
+.titleName {
+  font-size: 1.2em;
+  font-weight: 700;
+}
+
+.titlePosition {
+  margin: 5px 0;
+}
+
+.colMd {
+  padding: 0 300px;
+}
+.description {
+  text-align: center;
+
+  margin: 20px;
+  line-height: 30px;
+}
+
+.image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.editProfile {
+  padding: 10px 50px;
+  border-radius: 4px;
+  background-color: #5e50a1;
+  color: white;
+  border: none;
+  text-decoration: none;
+}
+
+.editProfile:hover {
+  padding: 10px 50px;
+  border-radius: 4px;
+  background-color: #4f3f9c;
+  color: white;
+  border: none;
+  text-decoration: none;
+}
+.wrapper {
+  margin: auto;
+  margin-top: 30px;
+}
+.wrapperIcon {
+  display: flex;
+  align-items: center;
+  color: #9ea0a5;
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 0.9em;
+}
+/* 
+.listSocials {
+  list-style-type: none;
+  padding: 0;
+  margin: auto;
+}
+
+.listSocial {
+  display: flex;
+  align-items: center;
+  padding: 5px 0;
+  color: #9ea0a5;
+} */
+
+.icon {
+  font-size: 1.8em;
+  margin-right: 15px;
+}
+
+.titleIcon {
+  font-size: 1.1em;
+}
+
+@media screen and (max-width: 991px) {
+  .colMd {
+    padding: 0 50px;
+  }
+}

@@ -5,6 +5,7 @@ import axios from 'axios';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
+import Swal from 'sweetalert2';
 import style from './login.module.css';
 
 export default function login() {
@@ -28,7 +29,20 @@ export default function login() {
       .post('http://localhost:4000/jobseeker/auth/login', login)
       .then((response) => {
         console.log(response.data.data);
-        alert(response.data.message);
+        if (response.data.message !== 'Login Successfull') {
+          Swal.fire({
+            title: `${response.data.message}`,
+            text: `Login Failed`,
+            icon: 'error',
+          });
+        } else {
+          Swal.fire({
+            title: `${response.data.message}`,
+            text: `Login Success`,
+            icon: 'success',
+          });
+        }
+
         const token = response.data.data.token;
         const id = response.data.data.id;
         const role = response.data.data.role;

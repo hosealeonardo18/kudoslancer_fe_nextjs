@@ -5,7 +5,7 @@ export default function CardExperience(props) {
   return (
     <>
       <div className="col-md-12 col-sm-12 d-flex mb-4">
-        <Image src={props.img} alt="img" className={style.imgExp} />
+        <Image src={props.img} alt="img" width={75} height={75} className={style.imgExp} />
         <div className={style.wrapperCard}>
           <h5 className={style.titleName}>{props.titleName}</h5>
           <span className={style.company}>{props.company}</span>

@@ -78,7 +78,7 @@ export default function jobseeker() {
 
           <div className="row mt-4">
             {jobseekers.map((item) => {
-              return <CardProfileHire img={img} titleName={item.fullname} job={item.position} location={item.city} id={item.id} />;
+              return <CardProfileHire img={item.image} titleName={item.fullname} job={item.position} location={item.city} id={item.id} />;
             })}
           </div>
         </div>

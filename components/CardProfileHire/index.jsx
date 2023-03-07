@@ -31,7 +31,7 @@ export default function CardProfileHire({ img, titleName, job, location, id }) {
       <div className="row">
         <div className="col-md-12" data-aos="fade-right" data-aos-duration="1000">
           <div className={style.wrapperCard}>
-            <Image src={img} alt="img" className={style.imageCard} />
+            <Image src={img} alt="img" width={100} height={100} className={style.imageCard} />
             <div className={style.wrapperProfile}>
               <h5 className={style.titleName}>{titleName}</h5>
               <span className={style.job}>{job}</span>
