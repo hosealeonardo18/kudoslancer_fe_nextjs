@@ -445,6 +445,7 @@ export default function EditProfile() {
                   <i className="bi bi-pin-map-fill me-2" />
                   <span className={style.location}>{recruiter?.city}</span>
                 </div>
+                <p className={`text-justify ${style.job}`}>{recruiter?.description}</p>
               </div>
               <button className={style.buttonHire} type="button" onClick={handleSubmitRecruiter}>
                 Simpan
@@ -474,6 +475,13 @@ export default function EditProfile() {
                   <Form children="Instagram" placeholder="Masukan akun Instagram" type="text" name="instagram" value={recruiter?.instagram} change={handleChangeRecruiter} />
 
                   <Form children="Linkedin" placeholder="Masukan akun Linkedin" type="text" name="linkedin" value={recruiter?.linkedin} change={handleChangeRecruiter} />
+
+                  <div className="form-floating p-0">
+                    <textarea className="form-control p-3" placeholder="Deskripsikan pekerjaan anda" id="floatingTextarea2" style={{ height: '100px' }} name="description" value={recruiter?.description} onChange={handleChangeRecruiter} />
+                    <label htmlFor="floatingTextarea2" className="ms-2">
+                      Deskripsi perusahaan
+                    </label>
+                  </div>
 
                   <div className="mb-3 mt-3">
                     <label for="formFile" className="form-label">

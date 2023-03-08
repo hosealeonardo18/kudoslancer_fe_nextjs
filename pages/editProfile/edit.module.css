@@ -29,6 +29,7 @@
 }
 
 .job {
+  text-align: justify;
   font-size: 1em;
   color: #9ea0a5;
   margin: 5px 0;
