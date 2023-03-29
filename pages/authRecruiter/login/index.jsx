@@ -2,6 +2,7 @@ import ButtonAuth from '@/components/ButtonAuth/ButtonAuth';
 import Form from '@/components/Form';
 import HeaderAuth from '@/components/HeaderAuth';
 import axios from 'axios';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
@@ -47,7 +48,7 @@ export default function login() {
         <div className="row">
           <div className={`${style.bgImage} col-md-6 bg-image align-items-center`}>
             <div>
-              <img className={style.logoCustom} src={''} alt="" />
+              <Image className={style.logoCustom} src={''} alt="image" />
               <p className={`px-4 ${style.description}`}>Temukan developer berbakat & terbaik di berbagai bidang keahlian</p>
             </div>
           </div>

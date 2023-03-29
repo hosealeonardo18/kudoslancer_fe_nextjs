@@ -7,6 +7,7 @@ import axios from 'axios';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import Swal from 'sweetalert2';
+import Image from 'next/image';
 
 export default function register() {
   const router = useRouter();
@@ -59,7 +60,7 @@ export default function register() {
         <div className="row vh-100">
           <div className={`${style.bgImage} col-md-6 bg-image align-items-center`}>
             <div>
-              <img className={style.logoCustom} src={''} alt="" />
+              <Image className={style.logoCustom} src={''} alt="image" />
               <p className={`px-4 ${style.description}`}>Temukan developer berbakat & terbaik di berbagai bidang keahlian</p>
             </div>
           </div>
