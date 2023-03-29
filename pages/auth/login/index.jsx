@@ -26,7 +26,7 @@ export default function login() {
     e.preventDefault();
 
     axios
-      .post('http://localhost:4000/jobseeker/auth/login', login)
+      .post(`${process.env.API_KUDOSLANCER}/jobseeker/auth/login`, login)
       .then((response) => {
         console.log(response.data.data);
         if (response.data.message !== 'Login Successfull') {

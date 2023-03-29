@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: false,
   env: {
-    API_KUDOSLANCER: 'http://localhost:4000',
+    API_KUDOSLANCER: 'https://kudoslancerrestapi.up.railway.app',
   },
   images: {
     remotePatterns: [

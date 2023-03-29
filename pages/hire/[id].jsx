@@ -28,7 +28,7 @@ export default function hire() {
   // get skill by id
   useEffect(() => {
     axios
-      .get(`http://localhost:3030/skills?jobseekerId=${id}`)
+      .get(`${process.env.API_KUDOSLANCER}/skills?jobseekerId=${id}`)
       .then((response) => {
         setSkills(response.data);
       })

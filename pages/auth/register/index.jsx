@@ -30,7 +30,7 @@ export default function register() {
     e.preventDefault();
 
     axios
-      .post('http://localhost:4000/jobseeker/auth/register', register)
+      .post(`${process.env.API_KUDOSLANCER}/jobseeker/auth/register`, register)
       .then((res) => {
         console.log(res);
         if (res.data.message !== 'Register Jobseeker Success!') {

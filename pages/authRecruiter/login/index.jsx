@@ -24,7 +24,7 @@ export default function login() {
   const handleLogin = (e) => {
     e.preventDefault();
     axios
-      .post('http://localhost:4000/recruiter/auth/login', login)
+      .post(`${process.env.API_KUDOSLANCER}/recruiter/auth/login`, login)
       .then((response) => {
         console.log(response.data.data);
         alert(response.data.message);

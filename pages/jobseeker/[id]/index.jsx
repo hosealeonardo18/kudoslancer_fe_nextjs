@@ -47,7 +47,7 @@ export default function ProfileDetail() {
 
     // // get skill by id
     axios
-      .get(`http://localhost:4000/skill/detail/jobseekerId/${id}`)
+      .get(`${process.env.API_KUDOSLANCER}/skill/detail/jobseekerId/${id}`)
       .then((response) => {
         setSkills(response.data.data);
       })
@@ -55,7 +55,7 @@ export default function ProfileDetail() {
 
     // // get experience by id
     axios
-      .get(`http://localhost:4000/experience/detail/jobseeker/${id}`)
+      .get(`${process.env.API_KUDOSLANCER}/experience/detail/jobseeker/${id}`)
       .then((response) => {
         setExperiences(response.data.data);
       })
@@ -63,7 +63,7 @@ export default function ProfileDetail() {
 
     // // get portfolios
     axios
-      .get(`http://localhost:4000/portfolio/detail/jobseeker/${id}`)
+      .get(`${process.env.API_KUDOSLANCER}/portfolio/detail/jobseeker/${id}`)
       .then((response) => {
         setPortfolios(response.data.data);
       })
