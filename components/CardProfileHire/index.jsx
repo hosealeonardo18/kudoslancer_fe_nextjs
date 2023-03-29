@@ -19,7 +19,7 @@ export default function CardProfileHire({ img, titleName, job, location, id }) {
   // get skill by id
   useEffect(() => {
     axios
-      .get(`http://localhost:4000/skill/detail/jobseekerId/${id}`)
+      .get(`${process.env.API_KUDOSLANCER}/skill/detail/jobseekerId/${id}`)
       .then((response) => {
         setSkills(response.data.data);
       })
