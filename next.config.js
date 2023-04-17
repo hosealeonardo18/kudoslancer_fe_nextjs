@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: false,
+  reactStrictMode: true,
+  swcMinify: true,
   env: {
     API_KUDOSLANCER: 'https://kudoslancerrestapi.up.railway.app',
   },
