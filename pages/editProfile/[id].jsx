@@ -239,7 +239,7 @@ export default function EditProfile() {
     axios
       .get(`${process.env.API_KUDOSLANCER}/jobseeker/${id}`)
       .then((response) => {
-        setJobseeker(response.data.data);
+        setJobseeker(response?.data.data);
       })
       .catch((err) => console.log(err));
 
@@ -318,7 +318,7 @@ export default function EditProfile() {
 
                 <form onSubmit={handleSubmitSkill}>
                   <div className={style.wrapperButton}>
-                    <input type="" placeholder="Java" name="skill_name" onChange={handleChangeSkill} value={skill.skill_name} className={`${style.input} form-control mt-2`} />
+                    <input type="" placeholder="Java" name="skill_name" onChange={handleChangeSkill} value={skill?.skill_name} className={`${style.input} form-control mt-2`} />
                     {/* <Form placeholder="Java / PHP" type="text" name="fullname" value="" /> */}
                     <button className={style.buttonSimpan} type="submit">
                       Simpan
@@ -372,9 +372,9 @@ export default function EditProfile() {
                 <hr />
 
                 <form onSubmit={handleSubmitPort}>
-                  <Form children="Nama Aplikasi" placeholder="Masukan nama aplikasi" type="text" name="application_name" value={portofolio.application_name} change={handleChangePort} />
+                  <Form children="Nama Aplikasi" placeholder="Masukan nama aplikasi" type="text" name="application_name" value={portofolio?.application_name} change={handleChangePort} />
 
-                  <Form children="Link Repository" placeholder="Masukan Link Repository" type="text" name="link_repository" value={portofolio.link_repository} change={handleChangePort} />
+                  <Form children="Link Repository" placeholder="Masukan Link Repository" type="text" name="link_repository" value={portofolio?.link_repository} change={handleChangePort} />
 
                   <div className="row">
                     <div className="col-md-6">

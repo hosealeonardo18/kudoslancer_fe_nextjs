@@ -14,13 +14,12 @@ export default function hire() {
   const id = router.query.id;
   const [jobseekersId, setJobseekersId] = useState([]);
   const [skills, setSkills] = useState([]);
-
   // get data jobseeker by id
   useEffect(() => {
     axios
       .get(`${process.env.API_KUDOSLANCER}/jobseeker/${id}`)
       .then((response) => {
-        setJobseekersId(response.data.data);
+        setJobseekersId(response?.data?.data);
       })
       .catch((err) => console.log(err));
   }, [id]);
@@ -28,9 +27,9 @@ export default function hire() {
   // get skill by id
   useEffect(() => {
     axios
-      .get(`${process.env.API_KUDOSLANCER}/skills?jobseekerId=${id}`)
+      .get(`${process.env.API_KUDOSLANCER}/skill/detail/jobseekerId/${id}`)
       .then((response) => {
-        setSkills(response.data);
+        setSkills(response?.data?.data);
       })
       .catch((err) => console.log(err));
   }, [id]);
@@ -55,7 +54,7 @@ export default function hire() {
               <h3 className="mt-4">Skill</h3>
               <div className={style.wrapperSkills}>
                 {skills?.map((skill) => {
-                  return <span className={style.skills}>{skill.skill_name}</span>;
+                  return <span className={style.skills}>{skill?.skill_name}</span>;
                 })}
               </div>
             </div>
@@ -63,7 +62,7 @@ export default function hire() {
           <div className="col-md-8 col-sm-12">
             <div className={style.wrapperCard}>
               <h2 className={style.titleHeader}>Hubungi {jobseekersId?.fullname}</h2>
-              <span className={style.subTitle}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.</span>
+              <span className={style.subTitle}>Berikan Penawaran terbaik.</span>
 
               <div className="row mt-5 d-flex justify-content-center">
                 <select className={`form-select ${style.formControl}`} aria-label="Default select example">
