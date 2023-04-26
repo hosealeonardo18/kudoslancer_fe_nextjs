@@ -1,6 +1,6 @@
 <p align="center">
 <div align="center">
-  <img height="150" src="https://drive.google.com/file/d/15GGqPQLNEuEW8PvVo765LI1lrg2N1DML/view?usp=sharing" alt="telegram" border="0" crossorigin="anonymous"/>
+  <img height="150" src="https://drive.google.com/file/d/uc?15GGqPQLNEuEW8PvVo765LI1lrg2N1DML/view?usp=sharing" alt="telegram" border="0" crossorigin="anonymous"/>
 </div>
   <h3 align="center">KudosLancer</h3>
   <p align="center">
@@ -129,8 +129,8 @@ REACT_APP_BACKEND_URL = [BACKEND_URL]
 
 <table>
  <tr>
-    <td><img width="350px" src="https://drive.google.com/file/d/1NfM09x7ASC6hAygS-1lZ3S-Y6C_E5DTB/view?usp=sharing" crossorigin="anonymous"  border="0" border="0" alt="1" /></td>
-    <td> <img width="350px" src="https://drive.google.com/file/d/1aTwueeYIx6MD9fIj5rmSGmi0mGorkT45/view?usp=sharing" crossorigin="anonymous" border="0"  border="0"  border="0"  alt="2" /></td>
+    <td><img width="350px" src="https://drive.google.com/file/d/uc?1NfM09x7ASC6hAygS-1lZ3S-Y6C_E5DTB/view?usp=sharing" border="0" border="0" alt="1" /></td>
+    <td> <img width="350px" src="https://drive.google.com/file/d/uc?1aTwueeYIx6MD9fIj5rmSGmi0mGorkT45/view?usp=sharing"border="0"  border="0"  border="0"  alt="2" /></td>
   </tr>
    <tr>
     <td>Login Page Jobseeker</td>
@@ -138,48 +138,48 @@ REACT_APP_BACKEND_URL = [BACKEND_URL]
   </tr>
 
   <tr>
-    <td><img width="350px" src="https://drive.google.com/file/d/1Frneh2ovN3WgXuNarWOhXS3u6HC-KSsR/view?usp=sharing" crossorigin="anonymous" border="0" border="0" alt="3" /> </td>
-     <td><img width="350px" src="https://drive.google.com/file/d/1K6H5yCoPiZgc871reXIs-nhm4pqUGRhN/view?usp=sharing" crossorigin="anonymous" border="0" border="0" alt="4" /></td>
+    <td><img width="350px" src="https://drive.google.com/file/d/uc?1Frneh2ovN3WgXuNarWOhXS3u6HC-KSsR/view?usp=sharing"border="0" border="0" alt="3" /> </td>
+     <td><img width="350px" src="https://drive.google.com/file/d/uc?1K6H5yCoPiZgc871reXIs-nhm4pqUGRhN/view?usp=sharing"border="0" border="0" alt="4" /></td>
   </tr>
    <tr>
     <td>Login Page Recruiter</td>
      <td>Register Page Recruiter</td>
   </tr>
     <tr>
-    <td><img width="350px" src="https://drive.google.com/file/d/1ytb54QMArBn_JsZqeZirxsJkQXJHyTim/view?usp=sharing" crossorigin="anonymous" border="0" border="0" alt="3" /> </td>
-     <td><img width="350px" src="https://drive.google.com/file/d/19yijvWwSffdV7xx6Ncz996Tdhy-mnaMp/view?usp=sharing" crossorigin="anonymous" border="0" border="0" alt="4" /></td>
+    <td><img width="350px" src="https://drive.google.com/file/d/uc?1ytb54QMArBn_JsZqeZirxsJkQXJHyTim/view?usp=sharing"border="0" border="0" alt="3" /> </td>
+     <td><img width="350px" src="https://drive.google.com/file/d/uc?19yijvWwSffdV7xx6Ncz996Tdhy-mnaMp/view?usp=sharing"border="0" border="0" alt="4" /></td>
   </tr>
    <tr>
     <td>Landing Page</td>
      <td>More Landing Page</td>
   </tr>
     <tr>
-    <td><img width="350px" src="https://drive.google.com/file/d/1OlaDVFbNd9rgHZjcCNu2VKN-kMF5sJUW/view?usp=sharing" crossorigin="anonymous" border="0" border="0" alt="3" /> </td>
-     <td><img width="350px" src="https://drive.google.com/file/d/1_HFGULRt80VLnG8nHv5mMUjLVqdMXaNF/view?usp=sharing" crossorigin="anonymous" border="0" border="0" alt="4" /></td>
+    <td><img width="350px" src="https://drive.google.com/file/d/uc?1OlaDVFbNd9rgHZjcCNu2VKN-kMF5sJUW/view?usp=sharing"border="0" border="0" alt="3" /> </td>
+     <td><img width="350px" src="https://drive.google.com/file/d/uc?1_HFGULRt80VLnG8nHv5mMUjLVqdMXaNF/view?usp=sharing"border="0" border="0" alt="4" /></td>
   </tr>
    <tr>
     <td>Hiring Page</td>
      <td>Detail Jobseeker</td>
   </tr>
       <tr>
-    <td><img width="350px" src="https://drive.google.com/file/d/1NNwd1yGa8T-IyFvcNkYuzdlzLMusLU-p/view?usp=sharing" crossorigin="anonymous" border="0" border="0" alt="3" /> </td>
-     <td><img width="350px" src="https://drive.google.com/file/d/1NNwd1yGa8T-IyFvcNkYuzdlzLMusLU-p/view?usp=sharing" crossorigin="anonymous" border="0" border="0" alt="4" /></td>
+    <td><img width="350px" src="https://drive.google.com/file/d/uc?1NNwd1yGa8T-IyFvcNkYuzdlzLMusLU-p/view?usp=sharing"border="0" border="0" alt="3" /> </td>
+     <td><img width="350px" src="https://drive.google.com/file/d/uc?1NNwd1yGa8T-IyFvcNkYuzdlzLMusLU-p/view?usp=sharing"border="0" border="0" alt="4" /></td>
   </tr>
    <tr>
     <td>Profile Jobseeker</td>
      <td>Edit Profile Jobseeker</td>
   </tr>
       <tr>
-    <td><img width="350px" src="https://drive.google.com/file/d/1w9AodV2mYfh-gL0827EZfO5DNCx7WgOs/view?usp=sharing" crossorigin="anonymous" border="0" border="0" alt="3" /> </td>
-     <td><img width="350px" src="https://drive.google.com/file/d/1tBtsMVUeiQto6UmN31umNtPAIJq36GEf/view?usp=sharing" crossorigin="anonymous" border="0" border="0" alt="4" /></td>
+    <td><img width="350px" src="https://drive.google.com/file/d/uc?1w9AodV2mYfh-gL0827EZfO5DNCx7WgOs/view?usp=sharing"border="0" border="0" alt="3" /> </td>
+     <td><img width="350px" src="https://drive.google.com/file/d/uc?1tBtsMVUeiQto6UmN31umNtPAIJq36GEf/view?usp=sharing"border="0" border="0" alt="4" /></td>
   </tr>
    <tr>
     <td>Edit Skill & Experience</td>
      <td>Edit Portfolio</td>
   </tr>
        <tr>
-    <td><img width="350px" src="https://drive.google.com/file/d/1-pTLhdii6hCUmQMdZnjsB9tO8wejEppo/view?usp=sharing" crossorigin="anonymous" border="0" border="0" alt="3" /> </td>
-     <td><img width="350px" src="https://drive.google.com/file/d/1uksyuOpAu703wdqG4tTWQ5xUj-rM3mWE/view?usp=sharing"  crossorigin="anonymous" border="0" border="0" alt="4" /></td>
+    <td><img width="350px" src="https://drive.google.com/file/d/uc?1-pTLhdii6hCUmQMdZnjsB9tO8wejEppo/view?usp=sharing"border="0" border="0" alt="3" /> </td>
+     <td><img width="350px" src="https://drive.google.com/file/d/uc?1uksyuOpAu703wdqG4tTWQ5xUj-rM3mWE/view?usp=sharing" border="0" border="0" alt="4" /></td>
   </tr>
    <tr>
     <td>Profile Recruiter</td>
