@@ -154,16 +154,16 @@ REACT_APP_BACKEND_URL = [BACKEND_URL]
      <td>More Landing Page</td>
   </tr>
     <tr>
-    <td><img width="350px" src="https://res.cloudinary.com/dklpoff31/image/upload/v1682587966/Screenshot_2023-04-17_105806_gxizqz.png" border="0" alt="3" /> </td>
-     <td><img width="350px" src="https://res.cloudinary.com/dklpoff31/image/upload/v1682587967/Screenshot_2023-04-17_105921_e8nvp5.png" border="0" alt="4" /></td>
+    <td><img width="350px" src="https://res.cloudinary.com/dklpoff31/image/upload/v1683641892/Screenshot_2023-05-09_211334_bnwbtl.png" border="0" alt="3" /> </td>
+     <td><img width="350px" src="https://res.cloudinary.com/dklpoff31/image/upload/v1683641892/Screenshot_2023-05-09_211419_hcyzlu.png" border="0" alt="4" /></td>
   </tr>
    <tr>
     <td>Hiring Page</td>
      <td>Detail Jobseeker</td>
   </tr>
       <tr>
-    <td><img width="350px" src="https://res.cloudinary.com/dklpoff31/image/upload/v1682587637/Screenshot_2023-04-26_213227_gzgyir.png" border="0" alt="3" /> </td>
-     <td><img width="350px" src="https://res.cloudinary.com/dklpoff31/image/upload/v1682587637/Screenshot_2023-04-26_213227_gzgyir.png" border="0" alt="4" /></td>
+    <td><img width="350px" src="https://res.cloudinary.com/dklpoff31/image/upload/v1683641892/Screenshot_2023-05-09_211244_-_Copy_jo5nlc.png" border="0" alt="3" /> </td>
+     <td><img width="350px" src="https://res.cloudinary.com/dklpoff31/image/upload/v1683641892/Screenshot_2023-05-09_211244_-_Copy_jo5nlc.png" border="0" alt="4" /></td>
   </tr>
    <tr>
     <td>Profile Jobseeker</td>
@@ -179,7 +179,7 @@ REACT_APP_BACKEND_URL = [BACKEND_URL]
   </tr>
        <tr>
     <td><img width="350px" src="https://res.cloudinary.com/dklpoff31/image/upload/v1682587636/Screenshot_2023-04-26_212239_htfk4f.png" border="0" alt="3" /> </td>
-     <td><img width="350px" src="https://res.cloudinary.com/dklpoff31/image/upload/v1682587636/Screenshot_2023-04-26_211959_xzp4p9.png" border="0" alt="4" /></td>
+     <td><img width="350px" src="https://res.cloudinary.com/dklpoff31/image/upload/v1683641892/Screenshot_2023-05-09_211546_j74qjd.png" border="0" alt="4" /></td>
   </tr>
    <tr>
     <td>Profile Recruiter</td>
